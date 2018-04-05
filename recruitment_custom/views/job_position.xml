@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_hr_job_form_custom" model="ir.ui.view">
+        <field name="name">hr.job.form.custom</field>
+        <field name="model">hr.job</field>
+        <field name="inherit_id" ref="hr.view_hr_job_form" />
+        <field name="arch" type="xml">
+            <xpath expr="/form/sheet/group/group[@name='recruitment']" position="attributes">
+                <attribute name='string'></attribute>
+            </xpath>
+            
+            <field name="hr_responsible_id" position="after">
+                <field name="reporting_manager" />
+                <field name="assign_location" />
+                <field name="years_experience" />
+                <field name="edu_qualification" />
+                <field name="languages" widget="many2many_tags"/>
+                <field name="it_skills" />
+                <field name="nationalities" />
+            </field>
+        </field>
+    </record>
+    
+    <record id="hr_job_survey_custom" model="ir.ui.view">
+        <field name="name">hr.job.form1.custom</field>
+        <field name="model">hr.job</field>
+        <field name="inherit_id" ref="hr_recruitment.hr_job_survey"/>
+        <field name="arch" type="xml">
+            <xpath expr="//group[@name='offer']" position="attributes">
+                <attribute name='string'></attribute>
+            </xpath>
+        </field>
+    </record>
+</odoo>

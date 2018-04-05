@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="hr_job_position_template">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-call="web.external_layout">
+                    <!-- <t t-set="o" t-value="o.with_context({'lang':o.partner_id.lang})"/> -->
+                    <div class="page">
+                        <div class="oe_structure"/>
+                        <h4>
+                            <strong><center> <span t-field="o.name" /> </center></strong>
+                        </h4>
+                        
+                        <table class="table table-condensed">
+                            <!-- <thead>
+                                <th>
+                                    <td colspan='4'><h4><center> <strong><span t-field="o.name" /></strong> </center></h4></td>
+                                </th>
+                            </thead> -->
+                            <tbody>
+                                <tr>
+                                    <td> Operating Unit </td>
+                                    <td> <span t-field="o.operating_unit_id" /> </td>
+                                    <td> Hr Responsible </td>
+                                    <td> <span t-field="o.hr_responsible_id" /> </td>
+                                </tr>
+                                <tr>
+                                    <td> Division </td>
+                                    <td> <span t-field="o.operating_division_id" /> </td>
+                                    <td> Reporting Manager </td>
+                                    <td> <span t-field="o.reporting_manager" /> </td>
+                                </tr>
+                                <tr>
+                                    <td> Department </td>
+                                    <td> <span t-field="o.department_id" /> </td>
+                                    <td> Assignment Location </td>
+                                    <td> <span t-field="o.assign_location" /> </td>
+                                </tr>
+                                <tr>
+                                    <td> Email Alias </td>
+                                    <td> <span t-field="o.alias_name" /> </td>
+                                    <td> Years of Experience </td>
+                                    <td> <span t-field="o.years_experience" /> </td>
+                                </tr>
+                                <tr>
+                                    <td> Recruitment Responsible </td>
+                                    <td> <span t-field="o.user_id" /> </td>
+                                    <td> Educational Qualification </td>
+                                    <td> <span t-field="o.edu_qualification" /> </td>
+                                </tr>
+                                <tr>
+                                    <td> Expected Recruitment </td>
+                                    <td> <span t-field="o.no_of_recruitment" /> </td>
+                                    <td> Language </td>
+                                    <td>
+                                        <t t-foreach="o.languages" t-as="language">
+                                            <span t-raw="language.name" />
+                                            <span> , </span>
+                                        </t>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td> IT Skills </td>
+                                    <td> <span t-field="o.it_skills" /> </td>
+                                    <td> Nationality </td>
+                                    <td> <span t-field="o.nationalities" /> </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="4">
+                                        <div><strong> Job Description </strong></div>
+                                        <p> <span t-field="o.description" /> </p>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo>

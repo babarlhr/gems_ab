@@ -76,16 +76,16 @@ class Employee(models.Model):
     imie_tag = fields.Char('IMIE Tag')
     
 #     docs to upload
-#     passport = fields.Binary('Passport')
-#     visa_doc = fields.Binary('Visa')
-#     iqama_doc = fields.Binary('Iqama')
-#     driver_licence_doc = fields.Binary('Driver Licence')
-#     tenancy_agreement_doc = fields.Binary('Tenancy Agreement')
-#     vehicle_reg_doc = fields.Binary('Vehicle Registeration')
-#     med_insur_policy = fields.Binary('Medical Insurance Policy')
-#     med_insur_card = fields.Binary('Medical Insurance Card')
+    passport = fields.Binary('Passport')
+    visa_doc = fields.Binary('Visa')
+    iqama_doc = fields.Binary('Iqama')
+    driver_licence_doc = fields.Binary('Driver Licence')
+    tenancy_agreement_doc = fields.Binary('Tenancy Agreement')
+    vehicle_reg_doc = fields.Binary('Vehicle Registeration')
+    med_insur_policy = fields.Binary('Medical Insurance Policy')
+    med_insur_card = fields.Binary('Medical Insurance Card')
     
-    docs_ids = fields.One2many('ir.attachment', 'employee_ext_id', string="Docs to Upload")
+#     docs_ids = fields.One2many('ir.attachment', 'employee_ext_id', string="Docs to Upload")
 
     emp_event_ids = fields.One2many('employee.event', 'employee_ids', string="Event")
     emp_event_accomodation_ids = fields.One2many('employee.accomodation.history', 'employee_acc_ids', string="Accomodation History")

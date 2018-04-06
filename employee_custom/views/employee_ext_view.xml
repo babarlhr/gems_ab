@@ -224,9 +224,18 @@
                     </page>
                     
                     <page string="Docs to Upload" name='docs_to_upload'>
-                        <group name="group_top">
-                            <group name="group_left">
-                                <!-- <field name="passport" invisible="0"/> -->
+                    <field nolabel="1" name="docs_ids" context="{'default_employee_ext_id': active_id, 'default_res_model': 'hr.employee'}">
+                        <tree editable="bottom">
+                            <field string="Attachment" name="datas" filename="datas_fname" attrs="{'invisible':[('type','=','url')]}" widget="binary"/>
+                            <field name="datas_fname" invisible="1" attrs="{'invisible':[('type','=','url')]}" class="oe_inline oe_right"/>
+                            <field name="doc_type" string="Doc Type" required="True"/>
+                            <field name="name" string="Description"/>
+                            <field name="type" invisible="1"/>
+                            <field name="employee_ext_id" invisible="1"/>
+                        </tree>
+                        
+                        <!-- <group name="group_top"> -->
+                            <!-- <group name="group_left">
                                 <field widget="binary" height="64" name="passport" />
                                 <field widget="binary" height="64" name="iqama_doc" />
                                 <field widget="binary" height="64" name="driver_licence_doc" />
@@ -237,8 +246,9 @@
                                 <field widget="binary" height="64" name="vehicle_reg_doc" />
                                 <field widget="binary" height="64" name="med_insur_policy" />
                                 <field widget="binary" height="64" name="med_insur_card" />
-                            </group>
-                        </group>
+                            </group> -->
+                        <!-- </group> -->
+                    </field>
                     </page>
                 </notebook>
             </xpath>

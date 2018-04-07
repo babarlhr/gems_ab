@@ -2,8 +2,8 @@
 {
     "name": "HSE Observation",
     "version": "11.2018.03.29.1",
-    "author": "Denero Team",
-    "website": "https://www.deneroteam.com",
+    "author": "Odoo Advantage Ireland",
+    "website": "www.odoo.ie",
     "category": "Project",
     "depends": ['operating_unit', 'hr', 'mail', 'calendar'],
     "data": [

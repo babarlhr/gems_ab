@@ -19,7 +19,7 @@
                     <field name="state" widget="statusbar"/>
                 </header>
                 <sheet>
-                    <div class="oe_button_box" name="button_box">
+                    <div class="oe_button_box" name="button_box" attrs="{'invisible':[('state','=','draft')]}">
                         <button  class="oe_stat_button" name="activity_tree_view" type="object" icon="fa-calendar">
                             <field string="Activities" name="total_activity" widget="statinfo"/>
                         </button>
@@ -33,7 +33,7 @@
                         <field name="incident_report_desc" string="Incident Description" placeholder="Please Describe the Incident Reported" groups="hse_observation.group_hse_observation_manager" attrs="{'required' : [('state','=','initial_investigation')]}"/>
                     </group>
                     <notebook>
-                        <page name="information" string="General Information">
+                        <page name="information" string="HSE Observation">
                             <group>
                                 <group>
                                     <field name = "create_by" options="{'no_create_edit': True, 'no_create':True, 'no_open': True}" />
@@ -295,7 +295,7 @@
     </record>
 
     <record id="action_hse_observation" model="ir.actions.act_window">
-        <field name="name">Observation</field>
+        <field name="name">HSE Observation/Non-Compliance Report</field>
         <field name="res_model">hse.observation</field>
         <field name="view_type">form</field>
         <field name="view_mode">tree,form</field>

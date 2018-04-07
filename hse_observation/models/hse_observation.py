@@ -23,7 +23,7 @@ class HSEObservation(models.Model):
         required=True, copy=False, index=True, default=lambda self: _('New')
     )
     
-    incident_report_desc = fields.Text('Incident Report Description', required=True)
+    incident_report_desc = fields.Text('Incident Report Description')
     equipment_id = fields.Many2many('hse.equipment', 'hse_equipment_hse_observation_rel', string="Equipment Involved")
     corrective_acction = fields.Text('Corrective Action to take')
     
@@ -70,7 +70,7 @@ class HSEObservation(models.Model):
     investigation_ids = fields.One2many('hse.investigation.line', 'observation_id', 
         string='Investigation Line'
     )
-    observation_msg = fields.Text("Please Input Your Observation In This Box")
+    observation_msg = fields.Text("Non-Compliance Description / Observation / Opportunity for improvement")
     state = fields.Selection([
         ('draft', 'New'),
         ('initial_investigation', 'Initial Investigation'),

@@ -8,6 +8,7 @@ class IrAttachment(models.Model):
 
     observation_id = fields.Many2one('hse.observation', string="Observation")
     investigation_id = fields.Many2one('hse.observation', string="Investigation")
+    further_investigation_id = fields.Many2one('hse.observation', string="Further Investigation")
 
 
 class HSEObservation(models.Model):
@@ -26,6 +27,7 @@ class HSEObservation(models.Model):
     incident_report_desc = fields.Text('Incident Report Description')
     equipment_id = fields.Many2many('hse.equipment', 'hse_equipment_hse_observation_rel', string="Equipment Involved")
     corrective_acction = fields.Text('Corrective Action to take')
+    corrective_action_further = fields.Text('Corrective Action To take')
     
     full_name_observer = fields.Char(string="Full Name of Observer")
     operating_unit_id = fields.Many2one(
@@ -57,7 +59,7 @@ class HSEObservation(models.Model):
         string="Date & Time",
     )
     is_assign = fields.Boolean(string="Assign")
-    root_cause_id = fields.Many2one('hse.root.cause', string='Root Cause')
+    root_cause_id = fields.One2many('hse.root.cause', 'observ_id', string='Root Cause')
     classification_id = fields.Many2one('hse.classification', string='Classification')
 #     risk_id = fields.Many2one('hse.risk', string='Risk Level')
     risk_level = fields.Selection([
@@ -65,7 +67,8 @@ class HSEObservation(models.Model):
                                 ('medium', 'Medium'),
                                 ('High', 'High'),
                                 ], string="Risk Level")
-    initial_cause = fields.Char(string='Initial Cause')
+#     initial_cause = fields.Char(string='Initial Cause')
+    initial_cause_id = fields.One2many('hse.initial.cause', 'observe_id', 'Initial Cause')
     findings_investigation = fields.Text(string='Findings of investigation')
     investigation_ids = fields.One2many('hse.investigation.line', 'observation_id', 
         string='Investigation Line'
@@ -83,6 +86,11 @@ class HSEObservation(models.Model):
     )
     investigation_attachment_ids = fields.One2many(
         'ir.attachment', 'investigation_id',
+        string='Attachments'
+    )
+    
+    further_investigation_attachment_ids = fields.One2many(
+        'ir.attachment', 'further_investigation_id',
         string='Attachments'
     )
     
@@ -116,3 +124,4 @@ class HSEObservation(models.Model):
             rec.officer_id = self.env.user.id
             rec.is_assign = True
             rec.officer_datetime = fields.datetime.now()
+    

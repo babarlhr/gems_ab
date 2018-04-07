@@ -47,4 +47,11 @@ class HSEinvestigation(models.Model):
 class HSERootcause(models.Model):
     _name = "hse.root.cause"
 
+    observ_id = fields.Many2one('hse.observation')
+    name = fields.Char(string="Name", required=True,)
+
+class HSEInitialCause(models.Model):
+    _name = "hse.initial.cause"
+
+    observe_id = fields.Many2one('hse.observation')
     name = fields.Char(string="Name", required=True,)

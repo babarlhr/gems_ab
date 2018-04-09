@@ -18,7 +18,6 @@ class IrAttachment(models.Model):
 class Employee(models.Model):
     _inherit = "hr.employee"
     
-    test_field = fields.Char('TESTING FIELD')
     name = fields.Char(related='resource_id.name', string="Name (EN)", store=True, oldname='name_related')
 #     Genaral information group
     join_date = fields.Date('Joining Date')

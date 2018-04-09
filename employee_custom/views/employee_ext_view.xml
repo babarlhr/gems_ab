@@ -11,6 +11,7 @@
                         <label for="name" class="oe_edit_only"/>
                         <h3>
                             <field name="name" placeholder="Employee's Name" required="True"/>
+                            <field name="test_field" />
                         </h3>
                     </div>
                 </div>

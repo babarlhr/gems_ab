@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="action_material_admin" model="ir.actions.act_window">
+        <field name="name">Material Admin</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">material.admin</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <!-- <field name="search_view_id" ref="sale_order_view_search_inherit_sale"/> -->
+        <!-- <field name="context">{}</field>
+        <field name="domain">[('state', 'not in', ('draft', 'sent', 'cancel'))]</field> -->
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                Create a Material Admin, the first step of a new record.
+            </p>
+        </field>
+    </record>
+    
+    <record id="action_composite_analysis" model="ir.actions.act_window">
+        <field name="name">Composite Analysis</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">composite.analysis</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                Create a composite analysis form, the first step of a new record.
+            </p>
+        </field>
+    </record>
+    
+    <record model="ir.ui.view" id="view_composite_analysis_form">
+        <field name="name">composite.analysis.form</field>
+        <field name="model">composite.analysis</field>
+        <field name="arch" type="xml">
+            <form string="Composite Analysis">
+            <group>
+                <group>
+                    <field name="composite_id" />
+                    <field name="manifest_no" />
+                    <field name="created_by" />
+                    <field name="date_time" />
+                    <field name="cod_ms_l" />
+                    <field name="tss_mg_l" />
+                </group>
+                <group>
+                    <field name="composition_oil" />
+                    <field name="composition_water" />
+                    <field name="composition_solids" />
+                    <field name="density" />
+                </group>
+            </group>
+            </form>
+        </field>
+    </record>
+    
+    <record model="ir.ui.view" id="view_material_admin_form">
+        <field name="name">material.admin.form</field>
+        <field name="model">material.admin</field>
+        <field name="arch" type="xml">
+            <form string="Material Admin">
+                <header>
+                    <button type="object" string="WB Operator" name="state_to_wb_operator" class="oe_highlight" attrs="{'invisible': [('state','!=', 'draft')]}"/>
+                    <button type="object" string="Fingerprint Analysis" name="state_to_fingerprint_analysis" class="oe_highlight" attrs="{'invisible': [('state','!=', 'wb_operator')]}"/>
+                    <button type="object" string="Process Data" name="state_to_process_data" class="oe_highlight" attrs="{'invisible': [('state','!=', 'fingerprint_analysis')]}"/>
+                    <field name="state" widget="statusbar"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name"/>
+                        </h1>
+                    </div>
+                    <notebook>
+                        <page string="Material Admin" name="material_name">
+                            <group>
+                                <group string="Genaral">
+                                    <field name="create_uid" readonly="True"/>
+                                    <field name="material_type" />
+                                    <field name="operating_unit" />
+                                    <field name="client" />
+                                    <field name="material_unit" />
+                                    <field name="quantity" />
+                                </group>
+                                <group string="At Site">
+                                    <field name="site_datetime_in" />
+                                    <field name="site_datetime_out" />
+                                    <field name="diver_name" />
+                                    <field name="iqama_no" />
+                                    <field name="sponsor_name" />
+                                    <field name="truck_no" />
+                                    <field name="iso_no" />
+                                    <field name="transfer_slip_no" />
+                                    <field name="site_material_desc" />
+                                </group>
+                                <group string="From Client">
+                                    <field name="datetime_out" />
+                                </group>
+                            </group>
+                        </page>
+                        <page string="WB Operaor">
+                            <group>
+                                <group>
+                                    <field name="client_wb_no" />
+                                    <field name="client_wb_weight" />
+                                    <field name="gross_weight" />
+                                    <field name="log_line_gw" />
+                                    <field name="log_time_tw" />
+                                </group>
+                                <group>
+                                    <field name="tear_weight" />
+                                    <field name="wb_operator" />
+                                    <field name="net_weight" />
+                                </group>
+                                <group string="WB Slip (Attach)">
+                                    <field nolabel="1" name = "wb_slip_id" context="{'default_observation_id': active_id, 'default_res_model': 'hse.observation'}">
+                                        <tree editable="bottom">
+                                            <field name="name" string="Name"/>
+                                            <field string="Attachment" name="datas" filename="datas_fname" attrs="{'invisible':[('type','=','url')]}" widget="binary"/>
+                                            <field name="datas_fname" invisible="1" attrs="{'invisible':[('type','=','url')]}" class="oe_inline oe_right"/>
+                                            <field name="type" invisible="1"/>
+                                            <field name="material_admin_id" invisible="1"/>
+                                        </tree>
+                                    </field>
+                                </group>
+                            </group>
+                        </page>
+                        
+                        <page string="Fingerprint Analysis">
+                            <group>
+                                <group>
+                                    <field name="lab_technician" />
+                                    <field name="density" />
+                                    <field name="flast_point" />
+                                    <field name="ph" />
+                                </group>
+                                <group>
+                                    <field name="appearance" />
+                                    <field name="oil_presence" />
+                                    <field name="h2s_presence" />
+                                </group>
+                            </group>
+                        </page>
+                        
+                        <page string="Process Data">
+                            <group>
+                                <group>
+                                    <field name="method_statment_ref" />
+                                    <field name="offloading_point" />
+                                    <field name="onloading_point" />
+                                    <field name="oil_recovery" />
+                                    <field name="oil_recovery_tons" />
+                                </group>
+                                <group>
+                                    <field name="water" />
+                                    <field name="water_tons" />
+                                    <field name="solids" />
+                                    <field name="solids_tons" />
+                                </group>
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers"/>
+                    <field name="activity_ids" widget="mail_activity"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+            </form>
+        </field>
+    </record>
+    
+    <record model="ir.ui.view" id="view_material_admin_tree">
+        <field name="name">material.admin.tree</field>
+        <field name="model">material.admin</field>
+        <field name="arch" type="xml">
+            <tree string="Material Admin">
+                <field name="name"/>
+                <field name="create_uid" />
+                <field name="material_type" />
+                <field name="client" />
+                <field name="operating_unit" />
+                <field name="material_unit" />
+                <field name="quantity" />
+            </tree>
+        </field>
+    </record>
+</odoo>

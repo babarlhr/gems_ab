@@ -16,7 +16,7 @@
         id="menu_customers"
         sequence="3"
         web_icon="contacts,static/description/icon.png"
-        groups="base.group_user,base.group_partner_manager"/>
+        groups="supplier_customer.group_customer"/>
     
     <menuitem id="res_partner_menu_customers"
         name="Customers"
@@ -27,7 +27,6 @@
     <menuitem id="res_partner_menu_config_customer"
         name="Configuration"
         parent="menu_customers"
-        groups="base.group_system"
         sequence="2"/>
 
     <menuitem id="menu_partner_category_form_customer"
@@ -89,7 +88,7 @@
         id="menu_suppliers"
         sequence="4"
         web_icon="contacts,static/description/icon.png"
-        groups="base.group_user,base.group_partner_manager"/>
+        groups="supplier_customer.group_supplier"/>
         
     <menuitem id="res_partner_menu_supplier"
         name="Suppliers"
@@ -100,7 +99,6 @@
     <menuitem id="res_partner_menu_config_suppliers"
         name="Configuration"
         parent="menu_suppliers"
-        groups="base.group_system"
         sequence="2"/>
     
     <menuitem id="menu_partner_category_form_suppliers"

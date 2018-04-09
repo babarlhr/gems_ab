@@ -7,6 +7,8 @@
     "category": "contacts",
     "depends": ['contacts', 'base'],
     "data": [
+        'security/security.xml',
+        'security/ir.model.access.csv',
         'views/contacts_menu.xml',
     ],
     'demo': [

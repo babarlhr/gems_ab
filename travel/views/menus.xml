@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <menuitem id="travel_app_root_menu"
+        name="Travel"
+        sequence="1"
+        web_icon="travel,static/description/icon.png"
+        groups="base.group_user"
+    />
+    
+    <menuitem id="travel_app_menu"
+        name="Travel"
+        action="travel_action"
+        sequence="5"
+        parent="travel_app_root_menu"
+        groups="base.group_user"
+    />
+    
+</odoo>

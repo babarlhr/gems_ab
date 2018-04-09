@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="travel_action" model="ir.actions.act_window">
+        <field name="name">Travel</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">travel.app</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+          <p class="oe_view_nocontent_create">
+            Click to add a Record.
+          </p>
+        </field>
+    </record>
+    
+    <record id="travel_app_form" model="ir.ui.view">
+        <field name="name">travel.app.form</field>
+        <field name="model">travel.app</field>
+        <field name="arch" type="xml">
+            <form string="Travel">
+                <group>
+                    <field name="name"/>
+                </group>
+            </form>
+        </field>
+    </record>
+    
+</odoo>

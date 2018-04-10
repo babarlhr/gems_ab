@@ -3,7 +3,7 @@
 
     <menuitem id="travel_app_root_menu"
         name="Travel"
-        sequence="1"
+        sequence="16"
         web_icon="travel,static/description/icon.png"
         groups="base.group_user"
     />
@@ -11,7 +11,7 @@
     <menuitem id="travel_app_menu"
         name="Travel"
         action="travel_action"
-        sequence="5"
+        sequence="1"
         parent="travel_app_root_menu"
         groups="base.group_user"
     />

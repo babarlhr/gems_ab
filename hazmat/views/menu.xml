@@ -3,7 +3,7 @@
     <menuitem id="hazmat_app_root_menu"
         name="Hazmat"
         web_icon="hazmat,static/description/icon.png"
-        sequence="1"
+        sequence="13"
         groups="base.group_user"
         />
         

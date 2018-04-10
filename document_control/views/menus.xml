@@ -3,7 +3,7 @@
 
     <menuitem id="document_control_root_menu"
         name="Docs Control"
-        sequence="1"
+        sequence="14"
         web_icon="document_control,static/description/icon.png"
         groups="base.group_user"
     />
@@ -11,7 +11,7 @@
     <menuitem id="document_control_menu"
         name="Docs Control"
         action="document_control_Action"
-        sequence="5"
+        sequence="1"
         parent="document_control_root_menu"
         groups="base.group_user"
     />

@@ -86,7 +86,7 @@
     <!-- Suppliers -->
     <menuitem name="Suppliers"
         id="menu_suppliers"
-        sequence="4"
+        sequence="2"
         web_icon="contacts,static/description/icon.png"
         groups="supplier_customer.group_supplier"/>
         

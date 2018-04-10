@@ -52,7 +52,7 @@ class HSEObservation(models.Model):
     date_of_incident = fields.Date(string="Date of Incident")
     position = fields.Char(string="Position")
     location_on_site = fields.Char(string="Location on Site")
-#     equipment_involved = fields.Char(string="Equipment Involved")
+    equipment_involved = fields.Char(string="Equipment Involved")
     input_observation = fields.Text(string="Please input your observation in this box")
     officer_id = fields.Many2one('res.users', string='Officer')
     officer_datetime = fields.Datetime(
@@ -67,7 +67,7 @@ class HSEObservation(models.Model):
                                 ('medium', 'Medium'),
                                 ('High', 'High'),
                                 ], string="Risk Level")
-#     initial_cause = fields.Char(string='Initial Cause')
+    initial_cause = fields.Char(string='Initial Cause')
     initial_cause_id = fields.One2many('hse.initial.cause', 'observe_id', 'Initial Cause')
     findings_investigation = fields.Text(string='Findings of investigation')
     investigation_ids = fields.One2many('hse.investigation.line', 'observation_id', 

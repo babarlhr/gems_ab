@@ -61,7 +61,7 @@ class HSEObservation(models.Model):
     is_assign = fields.Boolean(string="Assign")
     root_cause_id = fields.One2many('hse.root.cause', 'observ_id', string='Root Cause')
     classification_id = fields.Many2one('hse.classification', string='Classification')
-#     risk_id = fields.Many2one('hse.risk', string='Risk Level')
+    risk_id = fields.Many2one('hse.risk', string='Risk Level')
     risk_level = fields.Selection([
                                 ('low', 'Low'),
                                 ('medium', 'Medium'),

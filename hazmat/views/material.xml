@@ -98,7 +98,7 @@
                                 </group>
                             </group>
                         </page>
-                        <page string="WB Operaor">
+                        <page string="WB Operator">
                             <group>
                                 <group>
                                     <field name="client_wb_no" />

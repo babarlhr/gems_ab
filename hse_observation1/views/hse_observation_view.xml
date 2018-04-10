@@ -11,11 +11,11 @@
                     <button type="object" string="Submit For Initial Investigation" name="submit_initial_investigation" class="oe_highlight"
                     attrs="{'invisible': [('state','!=', 'draft')]}"/>
                     <button type="object" string="Submit For Further Investigation" name="submit_further_investigation" class="oe_highlight"
-                    attrs="{'invisible': ['|',('state','!=', 'initial_investigation'),('risk_level','=','low')]}" groups="hse_observation.group_hse_observation_manager"/>
+                    attrs="{'invisible': ['|',('state','!=', 'initial_investigation'),('risk_level','=','low')]}" groups="hse_observation1.group_hse_observation_manager"/>
                     <button type="object" string="Close" name="click_to_close" class="oe_highlight" states="further_investigation,initial_investigation"
-                    groups="hse_observation.group_hse_observation_manager"/>
+                    groups="hse_observation1.group_hse_observation_manager"/>
                     <button type="object" string="Assign to me" name="click_to_assign" class="oe_highlight"
-                    attrs="{'invisible': ['|', ('state','!=', 'initial_investigation'), ('is_assign', '=', True)]}" groups="hse_observation.group_hse_observation_manager"/>
+                    attrs="{'invisible': ['|', ('state','!=', 'initial_investigation'), ('is_assign', '=', True)]}" groups="hse_observation1.group_hse_observation_manager"/>
                     <field name="state" widget="statusbar"/>
                 </header>
                 <sheet>
@@ -67,7 +67,7 @@
                                 </group>
                             </group>
                         </page>
-                        <page name="initial_investigation" string="Initial Investigation" groups="hse_observation.group_hse_observation_manager">
+                        <page name="initial_investigation" string="Initial Investigation" groups="hse_observation1.group_hse_observation_manager">
                             <group>
                                 <group>
                                     <field name = "officer_id" readonly="1" options="{'no_create_edit': True, 'no_create':True, 'no_open': True}" />
@@ -109,7 +109,7 @@
                                 </group>
                             </group>
                         </page>
-                        <page name="root_cause_analysis" string="Further Investigation" groups="hse_observation.group_hse_observation_manager">
+                        <page name="root_cause_analysis" string="Further Investigation" groups="hse_observation1.group_hse_observation_manager">
                             <group>
                                 <!-- <group>
                                     <field name = "initial_cause" attrs="{'readonly': [('state','!=', 'further_investigation')]}"/>
@@ -423,10 +423,10 @@
 
     <menuitem
         id="menu_hse_observation"
-        web_icon="hse_observation,static/description/icon.png"
+        web_icon="hse_observation1,static/description/icon.png"
         sequence="11"
         name="HSE"
-        groups="hse_observation.group_hse_observation_user"
+        groups="hse_observation1.group_hse_observation_user"
     />
 
     <menuitem action="action_hse_observation"
@@ -434,7 +434,7 @@
         parent="menu_hse_observation"
         sequence="1"
         name="Observation"
-        groups="hse_observation.group_hse_observation_user"
+        groups="hse_observation1.group_hse_observation_user"
     />
 
     <menuitem action="action_hse_analysis"
@@ -442,7 +442,7 @@
         parent="menu_hse_observation"
         sequence="2"
         name="Analysis"
-        groups="hse_observation.group_hse_observation_user"
+        groups="hse_observation1.group_hse_observation_user"
     />
 
     <menuitem action="action_hse_root_cause"
@@ -450,7 +450,7 @@
         parent="menu_hse_observation"
         sequence="3"
         name="Root Cause"
-        groups="hse_observation.group_hse_observation_user"
+        groups="hse_observation1.group_hse_observation_user"
     />
 
     <menuitem action="action_hse_classification"
@@ -458,7 +458,7 @@
         parent="menu_hse_observation"
         sequence="3"
         name="Classification"
-        groups="hse_observation.group_hse_observation_user"
+        groups="hse_observation1.group_hse_observation_user"
     />
 
     <menuitem action="action_hse_risk"
@@ -466,7 +466,7 @@
         parent="menu_hse_observation"
         sequence="3"
         name="Risk"
-        groups="hse_observation.group_hse_observation_user"
+        groups="hse_observation1.group_hse_observation_user"
     />
     
     <menuitem action="action_hse_equipment"
@@ -474,7 +474,7 @@
         parent="menu_hse_observation"
         sequence="4"
         name="Equipments"
-        groups="hse_observation.group_hse_observation_user"
+        groups="hse_observation1.group_hse_observation_user"
     />
     
     <menuitem action="action_hse_activity_type"
@@ -482,7 +482,7 @@
         parent="menu_hse_observation"
         sequence="4"
         name="Activity Type"
-        groups="hse_observation.group_hse_observation_user"
+        groups="hse_observation1.group_hse_observation_user"
     />
 
 </odoo>

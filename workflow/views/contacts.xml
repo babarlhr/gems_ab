@@ -8,7 +8,7 @@
         <field name="arch" type="xml">
             <xpath expr="/form/sheet" position="before">
                 <header>
-                    <button type="object" string="Unverified ! Please verify" name="verification" class="btn-danger" states="unverified"/>
+                    <button type="object" string="Unverified ! Please verify" name="verification" class="btn-danger" groups="workflow.module_group_workflow" states="unverified"/>
                     <field name="state" widget="statusbar" />
                 </header>
             </xpath>

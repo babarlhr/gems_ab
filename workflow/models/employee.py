@@ -3,8 +3,8 @@ from lxml import etree
 from odoo.tools.safe_eval import safe_eval
 from odoo.osv.orm import setup_modifiers
 
-class ResPartner(models.Model):
-    _inherit = "res.partner"
+class HrEmployee(models.Model):
+    _inherit = "hr.employee"
     
     state = fields.Selection([
                             ('unverified', 'Unverified'),
@@ -17,7 +17,7 @@ class ResPartner(models.Model):
             
     @api.model
     def fields_view_get(self, view_id=None, view_type='form', toolbar=False, submenu=False):
-        result = super(ResPartner, self).fields_view_get(view_id, view_type, toolbar=toolbar, submenu=submenu)
+        result = super(HrEmployee, self).fields_view_get(view_id, view_type, toolbar=toolbar, submenu=submenu)
         if view_type=="form":
             doc = etree.XML(result['arch'])
             for node in doc.iter(tag="field"):

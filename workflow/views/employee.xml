@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    
+    <record id="view_employee_form_workflow" model="ir.ui.view">
+        <field name="name">hr.employee.form.workflow</field>
+        <field name="model">hr.employee</field>
+        <field name="inherit_id" ref="hr.view_employee_form" />
+        <field name="arch" type="xml">
+            <xpath expr="/form/sheet" position="before">
+                <header>
+                    <button type="object" string="Unverified ! Please verify" name="verification" groups="workflow.module_group_workflow" class="btn-danger" states="unverified"/>
+                    <field name="state" widget="statusbar" />
+                </header>
+            </xpath>
+        </field>
+    </record>
+    
+</odoo>

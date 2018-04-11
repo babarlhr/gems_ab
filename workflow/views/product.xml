@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    
+    <record id="product_template_form_view_view_workflow" model="ir.ui.view">
+        <field name="name">product.template.product.form.workflow</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_form_view" />
+        <field name="arch" type="xml">
+            <xpath expr="/form/header" position="inside">
+                <button type="object" string="Unverified ! Please verify" name="verification" groups="workflow.module_group_workflow" class="btn-danger" states="unverified"/>
+                <field name="state" widget="statusbar" />
+            </xpath>
+        </field>
+    </record>
+    
+</odoo>

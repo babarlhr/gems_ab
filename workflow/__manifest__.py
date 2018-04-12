@@ -13,7 +13,7 @@
                 'security/workflow_security.xml',
                 'views/contacts.xml',
                 'views/employee.xml',
-#                 'views/product.xml',
+                'views/product.xml',
             ],
     'installable': True,
 }

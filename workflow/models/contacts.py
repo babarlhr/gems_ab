@@ -38,8 +38,14 @@ class ResPartner(models.Model):
                         continue
                     else:
                         continue
-                node.set('attrs', "{'readonly':[('state','=','verified')]}")
-                setup_modifiers(node, result['fields'][node.get("name")])
+                elif 'invisible' in node.attrib.get("attrs",''):
+                    attrs_dict = safe_eval(node.get('attrs'))
+                    attrs_dict.update({'readonly': [('state','=','verified')]})
+                    node.set('attrs', str(attrs_dict))
+                    setup_modifiers(node, result['fields'][node.get("name")])
+                else:
+                    node.set('attrs', "{'readonly':[('state','=','verified')]}")
+                    setup_modifiers(node, result['fields'][node.get("name")])
                 
             result['arch'] = etree.tostring(doc)
         return result

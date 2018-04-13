@@ -1,4 +1,4 @@
-from odoo import models, fields, api
+from odoo import models, fields, api, _
 
 class MaterialAdmin(models.Model):
     _name = "material.admin"
@@ -6,7 +6,7 @@ class MaterialAdmin(models.Model):
     _rec_name = "name"
     
 #     name = fields.Char('Name')
-    name = fields.Char('Manifest Code')
+    name = fields.Char('Manifest Code', required=True, copy=False, readonly=True, index=True, default=lambda self: _('New'))
     material_unit = fields.Many2one('product.uom', string="Material Unit")
     material_type = fields.Many2one('material.type', string="Material Type")
     quantity = fields.Float('Quantity')
@@ -74,6 +74,7 @@ class MaterialAdmin(models.Model):
             ('wb_operator', 'WB Operator'),
             ('fingerprint_analysis', 'Fingerprint Analysis'),
             ('process_data', 'Process Data'),
+            ('close', 'Close'),
         ], readonly=True, copy=False, index=True, track_visibility='onchange', default='draft')
     
     @api.multi
@@ -90,6 +91,20 @@ class MaterialAdmin(models.Model):
     def state_to_process_data(self):
         for rec in self:
             rec.state = 'process_data'
+            
+    @api.multi
+    def state_to_close(self):
+        for rec in self:
+            rec.state = 'close'
+            
+    @api.model
+    def create(self, vals):
+        if vals.get('name', _('New')) == _('New'):
+            if 'company_id' in vals:
+                vals['name'] = self.env['ir.sequence'].with_context(force_company=vals['company_id']).next_by_code('material.admin') or _('New')
+            else:
+                vals['name'] = self.env['ir.sequence'].next_by_code('material.admin') or _('New')
+        return super(MaterialAdmin, self).create(vals)
 
 class CompositeAnalysis(models.Model):
     _name = 'composite.analysis'

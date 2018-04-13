@@ -4,14 +4,14 @@
         name="Hazmat"
         web_icon="hazmat,static/description/icon.png"
         sequence="13"
-        groups="base.group_user"
+        groups="hazmat.group_material_admin_user,hazmat.group_wb_operator,hazmat.group_fingerprint_analysis,hazmat.group_process_data"
         />
         
     <menuitem id="menu_hazmat_project"
         string="Material Admin"
         action="action_material_admin"
         parent="hazmat_app_root_menu"
-        groups="base.group_user"
+        groups="hazmat.group_material_admin_user,hazmat.group_wb_operator,hazmat.group_fingerprint_analysis,hazmat.group_process_data"
         sequence="1"
         />
         
@@ -19,7 +19,7 @@
         string="Composite Analysis"
         action="action_composite_analysis"
         parent="hazmat_app_root_menu"
-        groups="base.group_user"
+        groups="hazmat.group_material_admin_user,hazmat.group_wb_operator,hazmat.group_fingerprint_analysis,hazmat.group_process_data"
         sequence="2"
         />
     

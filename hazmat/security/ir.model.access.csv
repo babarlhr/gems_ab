@@ -1,2 +1,15 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_material_admin,material.admin,model_material_admin,,1,1,1,1
+access_material_user,material.admin.user,model_material_admin,hazmat.group_material_admin_user,1,1,1,1
+access_material_operator,material.admin.operator,model_material_admin,hazmat.group_wb_operator,1,1,1,0
+access_material_analysis,material.admin.analysis,model_material_admin,hazmat.group_fingerprint_analysis,1,1,1,0
+access_material_process,material.admin.process,model_material_admin,hazmat.group_process_data,1,1,1,0
+
+access_composite_analysis_user,composite.analysis.user,model_composite_analysis,hazmat.group_material_admin_user,1,1,1,1
+access_composite_analysis_operator,composite.analysis.operator,model_composite_analysis,hazmat.group_wb_operator,1,1,1,1
+access_composite_analysis_analysis,composite.analysis.analysis,model_composite_analysis,hazmat.group_fingerprint_analysis,1,1,1,1
+access_composite_analysis_process,composite.analysis.process,model_composite_analysis,hazmat.group_process_data,1,1,1,1
+
+access_material_type_user,material.type.user,model_material_type,hazmat.group_material_admin_user,1,1,1,1
+access_material_type_operator,material.type.operator,model_material_type,hazmat.group_wb_operator,1,1,1,1
+access_material_type_analysis,material.type.analysis,model_material_type,hazmat.group_fingerprint_analysis,1,1,1,1
+access_material_type_process,material.type.process,model_material_type,hazmat.group_process_data,1,1,1,1

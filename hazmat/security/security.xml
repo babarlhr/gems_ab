@@ -2,15 +2,71 @@
 <odoo>
     <data>
         
-        <record model="ir.module.category" id="module_category_material_admin">
-            <field name="name">Material Admin</field>
+        <!-- Group Category -->
+        <record model="ir.module.category" id="module_category_hazmat">
+            <field name="name">Hazmat</field>
             <field name="sequence">100</field>
         </record>
         
-        <record model="res.groups" id="group_material_admin">
+        <!-- Security Groups -->
+        <record model="res.groups" id="group_material_admin_user">
             <field name="name">Material Admin</field>
-            <field name="category_id" ref="module_category_material_admin"/>
-            <field name="comment">This user can have access to Hazmat App</field>
+            <field name="category_id" ref="module_category_hazmat"/>
+            <field name="comment">This user can access Material Admin Tab</field>
+            <field name="sequence">1</field>
+        </record>
+        
+        <record model="res.groups" id="group_wb_operator">
+            <field name="name">WB Operator</field>
+            <field name="category_id" ref="module_category_hazmat"/>
+            <!-- <field name="implied_ids" eval="[(4, ref('hazmat.group_material_admin_user'))]" /> -->
+            <field name="comment">This user have access to WB operator TAB</field>
+            <field name="sequence">2</field>
+        </record>
+        
+        <record model="res.groups" id="group_fingerprint_analysis">
+            <field name="name">FingerPrint</field>
+            <field name="category_id" ref="module_category_hazmat"/>
+            <!-- <field name="implied_ids" eval="[(4, ref('hazmat.group_wb_operator'))]" /> -->
+            <field name="comment">This user have rights of WB operator group and fingerprint Analysis</field>
+            <field name="sequence">3</field>
+        </record>
+        
+        <record model="res.groups" id="group_process_data">
+            <field name="name">Process Data</field>
+            <field name="category_id" ref="module_category_hazmat"/>
+            <!-- <field name="implied_ids" eval="[(4, ref('hazmat.group_fingerprint_analysis'))]" /> -->
+            <field name="comment">This user have rights of fingerprint analysis group and Process DaTa Tab</field>
+            <field name="sequence">4</field>
+        </record>
+        
+        <!-- Record rules -->
+        <record model="ir.rule" id="material_admin_user_rule">
+            <field name="name">See own documents and Draft state documents</field>
+            <field name="model_id" ref="model_material_admin"/>
+            <field name="domain_force">[('create_uid.id','=', user.id)]</field>
+            <field name="groups" eval="[(4,ref('group_material_admin_user'))]"/>
+        </record>
+        
+        <record model="ir.rule" id="wb_operator_rule">
+            <field name="name">See documents in WB Operator State</field>
+            <field name="model_id" ref="model_material_admin"/>
+            <field name="domain_force">['|',('state','=','wb_operator'),'|',('state','=','fingerprint_analysis'),'|',('state','=','process_data'),('state','=','close')]</field>
+            <field name="groups" eval="[(4,ref('group_wb_operator'))]"/>
+        </record>
+        
+        <record model="ir.rule" id="fingerprint_analysis_rule">
+            <field name="name">See documents in FingerPrint State</field>
+            <field name="model_id" ref="model_material_admin"/>
+            <field name="domain_force">['|',('state','=','fingerprint_analysis'),'|',('state','=','process_data'),('state','=','close')]</field>
+            <field name="groups" eval="[(4,ref('group_fingerprint_analysis'))]"/>
+        </record>
+        
+        <record model="ir.rule" id="process_data_rule">
+            <field name="name">See documents in Process Data State</field>
+            <field name="model_id" ref="model_material_admin"/>
+            <field name="domain_force">['|',('state','=','process_data'),('state','=','close')]</field>
+            <field name="groups" eval="[(4,ref('group_process_data'))]"/>
         </record>
         
     </data>

@@ -1,5 +1,4 @@
 from odoo import models, fields, api, _
-from bs4.builder import FAST
 from bzrlib import api_minimum_version
 import datetime
 from ldap.cidict import cidict

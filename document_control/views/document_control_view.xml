@@ -151,13 +151,13 @@
                             <hr />
                         </div>
                         <div width="100%">
-                            <label for="approver_1" style="width: 14%;"/>
+                            <!-- <label for="approver_1" style="width: 14%;"/>
                             <field name="approver_1"
                                 options="{'no_create_edit': True, 'no_create':True, 'no_open': True}"
                                 class="oe_inline"
                                 attrs="{'readonly': ['|', ('approval_state_1', '=', 'done'),('state','=', 'done')]}"
                                 style="min-width: 25% !important;margin-right:5px !important; "
-                            />
+                            /> -->
                             <field name="approval_state_1"
                                 class="oe_inline mt8 o_state done"
                                 readonly="1"

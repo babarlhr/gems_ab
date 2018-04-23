@@ -1,7 +1,5 @@
 from odoo import models, fields, api, _
-from bzrlib import api_minimum_version
 import datetime
-from ldap.cidict import cidict
 
 class DocumentControl(models.Model):
     _name="document.control"

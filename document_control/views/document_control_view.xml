@@ -9,7 +9,7 @@
                 <sheet>
                     <group>
                         <group string="Feedback">
-                            <field name="feedback_comment" nolabel="1" placeholder="Write your comment / Feedback here." />
+                            <!-- <field name="feedback_comment" nolabel="1" placeholder="Write your comment / Feedback here." /> -->
                         </group>
                     </group>
                 </sheet>

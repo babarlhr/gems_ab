@@ -1,12 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
+    
+    <record id="doocument_control_wizard_cancel" model="ir.ui.view">
+        <field name="name">document.control.form.wizard</field>
+        <field name="model">document.control</field>
+        <field name="arch" type="xml">
+            <form string="Document Control">
+                <sheet>
+                    <group>
+                        <group string="Feedback">
+                            <field name="feedback_comment" nolabel="1" placeholder="Write your comment / Feedback here." />
+                        </group>
+                    </group>
+                </sheet>
+                <footer>
+                    <button type="object" string="Reject" name="action_done" class="btn-danger"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+    
+    <record id="document_control_reject_wizard_action" model="ir.actions.act_window">
+        <field name="name">Wizard</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">document.control</field>
+        <field name="view_type">form</field>
+        <!-- <field name="view_mode">tree,form,calendar</field> -->
+        <field name="view_id" ref="document_control.doocument_control_wizard_cancel"/>
+        <field name="target">new</field>
+    </record>
 
     <record id="document_control_Action" model="ir.actions.act_window">
         <field name="name">Document Control</field>
         <field name="type">ir.actions.act_window</field>
         <field name="res_model">document.control</field>
         <field name="view_type">form</field>
-        <field name="view_mode">tree,form</field>
+        <field name="view_mode">tree,form,calendar</field>
         <field name="help" type="html">
           <p class="oe_view_nocontent_create">
             Click to add a Record.
@@ -19,11 +48,243 @@
         <field name="model">document.control</field>
         <field name="arch" type="xml">
             <form string="Document Control">
-                <group>
-                    <field name="name"/>
-                </group>
+                <field name="is_creator" invisible="1"/>
+                <field name="is_author" invisible="1"/>
+                    <field name="is_reviewer" invisible="1"/>
+                    <field name="is_approver" invisible="1"/>
+                <header>
+                    <button type="object" string="Submit for Approval" attrs="{'invisible': ['|',('is_creator','=',False),('state','!=','draft')]}" name="states_approval" class="oe_highlight"/>
+                    
+                    <button type="object" string="Approve and Next" attrs="{'invisible': ['|',('is_author','=',False),('state','!=','approval_1')]}" name="states_approval" class="oe_highlight"/>
+                    <button type="object" string="Return" attrs="{'invisible': ['|',('is_author','=',False),('state','!=','approval_1')]}" name="states_approval"/>
+                    <button type="action" string="Reject" attrs="{'invisible': ['|',('is_author','=',False),('state','!=','approval_1')]}" name="%(document_control_reject_wizard_action)d" class="btn-danger"/>
+                    
+                    <button type="object" string="Approve and Next" attrs="{'invisible': ['|',('is_reviewer','=',False),('state','!=','approval_2')]}" name="states_approval" class="oe_highlight"/>
+                    <button type="object" string="Return" attrs="{'invisible': ['|',('is_reviewer','=',False),('state','!=','approval_2')]}" name="states_approval"/>
+                    <button type="object" string="Reject" attrs="{'invisible': ['|',('is_reviewer','=',False),('state','!=','approval_2')]}" name="states_approval" class="btn-danger"/>
+                    
+                    <button type="object" string="Approve and next" attrs="{'invisible': ['|',('is_approver','=',False),('state','!=','approval_3')]}" name="states_approval" class="oe_highlight"/>
+                    <button type="object" string="Return" attrs="{'invisible': ['|',('is_approver','=',False),('state','!=','approval_3')]}" name="states_approval"/>
+                    <button type="object" string="Reject" attrs="{'invisible': ['|',('is_approver','=',False),('state','!=','approval_3')]}" name="states_approval" class="btn-danger"/>
+                    
+                    <!-- <button type="object" string="Approve and next" attrs="{'invisible': ['|',('is_approver','=',False),('state','!=','approval_3')]}" name="states_approval" class="oe_highlight"/> -->
+                    <field name="state" widget="statusbar"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" />
+                        </h1>
+                    </div>
+                    <hr />
+                    <group>
+                        <group>
+                            <field name="requested_by" />
+                            <field name="doc_attachment"/>
+                            <!-- <field name="description"/> -->
+                        </group>
+                        <group>
+                            <field name="date_time" />
+                            <field name="doc_type" />
+                        </group>
+                        <group string="Description">
+                            <field name="description" nolabel="1" placeholder="Description for Attachment."/>
+                        </group>
+                        <div width="100%">
+                            <hr />
+                        </div>
+                        <div width="100%">
+                            <label for="assign_to_manager" style="width: 14%;"/>
+                            <field name="assign_to_manager"
+                                options="{'no_create_edit': True, 'no_create':True, 'no_open': True}"
+                                class="oe_inline"
+                                style="min-width: 25% !important;margin-right:5px !important; "
+                            />
+                            <field name="assign_datetime_manager"
+                                class="oe_inline mt8"
+                                readonly="1"
+                                style="min-width: 15% !important;margin-right:30px !important;"
+                            />
+                            <label for="elapsed_days_m" string="Elapsed Days (" style="width: 10%;"/>
+                            <field name="elapsed_days_m"
+                                style="min-width: 3% !important;margin-right:2px !important;"
+                                class="oe_inline mt8"
+                                readonly="1"/>
+                            <label for="elapsed_days_m" string=")" style="width: 10%;"/>
+                            <br/>
+                            
+                            <label for="assign_to_officer" style="width: 14%;"/>
+                            <field name="assign_to_officer"
+                                options="{'no_create_edit': True, 'no_create':True, 'no_open': True}"
+                                class="oe_inline"
+                                style="min-width: 25% !important;margin-right:5px !important; "
+                            />
+                            <field name="assign_datetime_officer"
+                                class="oe_inline mt8"
+                                readonly="1"
+                                style="min-width: 15% !important;margin-right:30px !important;"
+                            />
+                            <label for="elapsed_days_o" string="Elapsed Days (" style="width: 10%;"/>
+                            <field name="elapsed_days_o"
+                                style="min-width: 3% !important;margin-right:2px !important;"
+                                class="oe_inline mt8"
+                                readonly="1"/>
+                            <label for="elapsed_days_o" string=")" style="width: 10%;"/>
+                            <br/>
+                        </div>
+                        <div width="100%">
+                            <hr />
+                        </div>
+                        <group>
+                            <field nolabel="1" name="doc_ids" context="{'default_doc_ids': active_id, 'default_res_model': 'document.control'}">
+                                <tree editable="bottom">
+                                    <field string="Document" name="datas" filename="datas_fname" attrs="{'invisible':[('type','=','url')]}" widget="binary"/>
+                                    <field name="datas_fname" invisible="1" attrs="{'invisible':[('type','=','url')]}" class="oe_inline oe_right"/>
+                                    <field name="name" string="Description"/>
+                                    <field name="doc_author" string="Author"/>
+                                    <field name="type" invisible="1"/>
+                                    <field name="document_id" invisible="1"/>
+                                </tree>
+                            </field>
+                        </group>
+                        <div width="100%">
+                            <hr />
+                        </div>
+                        <div width="100%">
+                            <label for="approver_1" style="width: 14%;"/>
+                            <field name="approver_1"
+                                options="{'no_create_edit': True, 'no_create':True, 'no_open': True}"
+                                class="oe_inline"
+                                attrs="{'readonly': ['|', ('approval_state_1', '=', 'done'),('state','=', 'done')]}"
+                                style="min-width: 25% !important;margin-right:5px !important; "
+                            />
+                            <field name="approval_state_1"
+                                class="oe_inline mt8 o_state done"
+                                readonly="1"
+                                style="min-width: 10% !important;"
+                                attrs="{'invisible' : [('approval_state_1', '!=', 'done')]}"
+                            />
+                            <field name="approval_state_1"
+                                class="oe_inline mt8 o_state pending"
+                                readonly="1"
+                                style="min-width: 10% !important;"
+                                attrs="{'invisible' : [('approval_state_1', '!=', 'pending')]}"
+                            />
+                            <field name="approval_state_1"
+                                class="oe_inline mt8 o_state cancelled"
+                                readonly="1"
+                                style="min-width: 10% !important;"
+                                attrs="{'invisible' : [('approval_state_1', '!=', 'cancelled')]}"
+                            />
+                            <field name="approval_state_1"
+                                class="oe_inline mt8 o_state hold"
+                                readonly="1"
+                                style="min-width: 10% !important;"
+                                attrs="{'invisible' : [('approval_state_1', '!=', 'hold')]}"
+                            />
+                            <br />
+                            
+                            <label for="approver_2" style="width: 14%;"/>
+                            <field name="approver_2"
+                                options="{'no_create_edit': True, 'no_create':True, 'no_open': True}"
+                                class="oe_inline"
+                                attrs="{'readonly': ['|', ('approval_state_2', '=', 'done'),('state','=', 'done')]}"
+                                style="min-width: 25% !important;margin-right:5px !important; "
+                            />
+                            <field name="approval_state_2"
+                                class="oe_inline mt8 o_state done"
+                                readonly="1"
+                                style="min-width: 10% !important;"
+                                attrs="{'invisible' : [('approval_state_2', '!=', 'done')]}"
+                            />
+                            <field name="approval_state_2"
+                                class="oe_inline mt8 o_state pending"
+                                readonly="1"
+                                style="min-width: 10% !important;"
+                                attrs="{'invisible' : [('approval_state_2', '!=', 'pending')]}"
+                            />
+                            <field name="approval_state_2"
+                                class="oe_inline mt8 o_state cancelled"
+                                readonly="1"
+                                style="min-width: 10% !important;"
+                                attrs="{'invisible' : [('approval_state_2', '!=', 'cancelled')]}"
+                            />
+                            <field name="approval_state_2"
+                                class="oe_inline mt8 o_state hold"
+                                readonly="1"
+                                style="min-width: 10% !important;"
+                                attrs="{'invisible' : [('approval_state_2', '!=', 'hold')]}"
+                            />
+                            <br />
+                            
+                            <label for="approver_3" style="width: 14%;"/>
+                            <field name="approver_3"
+                                options="{'no_create_edit': True, 'no_create':True, 'no_open': True}"
+                                class="oe_inline"
+                                attrs="{'readonly': ['|', ('approval_state_3', '=', 'done'),('state','=', 'done')]}"
+                                style="min-width: 25% !important;margin-right:5px !important; "
+                            />
+                            <field name="approval_state_3"
+                                class="oe_inline mt8 o_state done"
+                                readonly="1"
+                                style="min-width: 10% !important;"
+                                attrs="{'invisible' : [('approval_state_3', '!=', 'done')]}"
+                            />
+                            <field name="approval_state_3"
+                                class="oe_inline mt8 o_state pending"
+                                readonly="1"
+                                style="min-width: 10% !important;"
+                                attrs="{'invisible' : [('approval_state_3', '!=', 'pending')]}"
+                            />
+                            <field name="approval_state_3"
+                                class="oe_inline mt8 o_state cancelled"
+                                readonly="1"
+                                style="min-width: 10% !important;"
+                                attrs="{'invisible' : [('approval_state_3', '!=', 'cancelled')]}"
+                            />
+                            <field name="approval_state_3"
+                                class="oe_inline mt8 o_state hold"
+                                readonly="1"
+                                style="min-width: 10% !important;"
+                                attrs="{'invisible' : [('approval_state_3', '!=', 'hold')]}"
+                            />
+                            <br />
+                        </div>
+                    </group>        
+                </sheet>
+                <div class="oe_chatter">
+                      <field name="message_follower_ids" widget="mail_followers"/>
+                      <field name="message_ids" widget="mail_thread"/>
+                 </div>
             </form>
         </field>
     </record>
     
+    <record id="document_control_tree" model="ir.ui.view">
+        <field name="name">document.control.tree</field>
+        <field name="model">document.control</field>
+        <field name="arch" type="xml">
+            <tree string="Document Control">
+                <field name="name" />
+                <field name="requested_by" />
+                <field name="doc_type" />
+                <field name="assign_to_manager"/>
+                <field name="assign_to_officer"/>
+                <field name="state"/>
+            </tree>
+        </field>
+    </record>
+    
+    <record id="document_control_calendar_view" model="ir.ui.view">
+        <field name="name">document.control.calendar.view</field>
+        <field name="model">document.control</field>
+        <field name="priority" eval="2"/>
+        <field name="arch" type="xml">
+            <calendar string="Document Control" date_start="date_time" color="requested_by">
+                <field name="name"/>
+                <field name="requested_by"/>
+            </calendar>
+        </field>
+    </record>
+        
 </odoo>

@@ -9,12 +9,13 @@
                 <sheet>
                     <group>
                         <group string="Feedback">
+                            <field name="requested_by" />
                             <field name="feedback_comment" nolabel="1" placeholder="Write your comment / Feedback here." />
                         </group>
                     </group>
                 </sheet>
                 <footer>
-                    <button type="object" string="Reject" name="action_done" class="btn-danger"/>
+                    <button type="object" string="Reject" name="set_to_rejected" class="btn-danger"/>
                 </footer>
             </form>
         </field>
@@ -55,13 +56,13 @@
                 <header>
                     <button type="object" string="Submit for Approval" attrs="{'invisible': ['|',('is_creator','=',False),('state','!=','draft')]}" name="states_approval" class="oe_highlight"/>
                     
-                    <button type="object" string="Approve and Next" attrs="{'invisible': ['|',('is_author','=',False),('state','!=','approval_1')]}" name="states_approval" class="oe_highlight"/>
+                    <!-- <button type="object" string="Approve and Next" attrs="{'invisible': ['|',('is_author','=',False),('state','!=','approval_1')]}" name="states_approval" class="oe_highlight"/>
                     <button type="object" string="Return" attrs="{'invisible': ['|',('is_author','=',False),('state','!=','approval_1')]}" name="states_approval"/>
-                    <button type="action" string="Reject" attrs="{'invisible': ['|',('is_author','=',False),('state','!=','approval_1')]}" name="%(document_control_reject_wizard_action)d" class="btn-danger"/>
+                    <button type="action" string="Reject" attrs="{'invisible': ['|',('is_author','=',False),('state','!=','approval_1')]}" name="%(document_control_reject_wizard_action)d" class="btn-danger"/> -->
                     
-                    <button type="object" string="Approve and Next" attrs="{'invisible': ['|',('is_reviewer','=',False),('state','!=','approval_2')]}" name="states_approval" class="oe_highlight"/>
+                    <!-- <button type="object" string="Approve and Next" attrs="{'invisible': ['|',('is_reviewer','=',False),('state','!=','approval_2')]}" name="states_approval" class="oe_highlight"/>
                     <button type="object" string="Return" attrs="{'invisible': ['|',('is_reviewer','=',False),('state','!=','approval_2')]}" name="states_approval"/>
-                    <button type="object" string="Reject" attrs="{'invisible': ['|',('is_reviewer','=',False),('state','!=','approval_2')]}" name="states_approval" class="btn-danger"/>
+                    <button type="object" string="Reject" attrs="{'invisible': ['|',('is_reviewer','=',False),('state','!=','approval_2')]}" name="states_approval" class="btn-danger"/> -->
                     
                     <button type="object" string="Approve and next" attrs="{'invisible': ['|',('is_approver','=',False),('state','!=','approval_3')]}" name="states_approval" class="oe_highlight"/>
                     <button type="object" string="Return" attrs="{'invisible': ['|',('is_approver','=',False),('state','!=','approval_3')]}" name="states_approval"/>
@@ -147,110 +148,156 @@
                                 </tree>
                             </field>
                         </group>
-                        <div width="100%">
-                            <hr />
+                    </group>    
+                    <div width="100%">
+                        <hr />
+                    </div>
+                    <div width="100%">
+                        <label for="approver_1" style="width: 14%;"/>
+                        <field name="approver_1"
+                            options="{'no_create_edit': True, 'no_create':True, 'no_open': True}"
+                            class="oe_inline"
+                            attrs="{'readonly': ['|', ('approval_state_1', '=', 'done'),('state','in', ('done','approval_1'))]}"
+                            style="min-width: 25% !important;margin-right:5px !important; "
+                        />
+                        <field name="approval_state_1"
+                            class="oe_inline mt8 o_state done"
+                            readonly="1"
+                            style="min-width: 10% !important;"
+                            attrs="{'invisible' : [('approval_state_1', '!=', 'done')]}"
+                        />
+                        <field name="approval_state_1"
+                            class="oe_inline mt8 o_state pending"
+                            readonly="1"
+                            style="min-width: 10% !important;"
+                            attrs="{'invisible' : [('approval_state_1', '!=', 'pending')]}"
+                        />
+                        <field name="approval_state_1"
+                            class="oe_inline mt8 o_state cancelled"
+                            readonly="1"
+                            style="min-width: 10% !important;"
+                            attrs="{'invisible' : [('approval_state_1', '!=', 'cancelled')]}"
+                        />
+                        <field name="approval_state_1"
+                            class="oe_inline mt8 o_state hold"
+                            readonly="1"
+                            style="min-width: 10% !important;"
+                            attrs="{'invisible' : [('approval_state_1', '!=', 'hold')]}"
+                        />
+                        <br />
+                        
+                        <label for="approver_2" style="width: 14%;"/>
+                        <field name="approver_2"
+                            options="{'no_create_edit': True, 'no_create':True, 'no_open': True}"
+                            class="oe_inline"
+                            attrs="{'readonly': ['|', ('approval_state_2', '=', 'done'),('state','in', ('done','approval_2'))]}"
+                            style="min-width: 25% !important;margin-right:5px !important; "
+                        />
+                        <field name="approval_state_2"
+                            class="oe_inline mt8 o_state done"
+                            readonly="1"
+                            style="min-width: 10% !important;"
+                            attrs="{'invisible' : [('approval_state_2', '!=', 'done')]}"
+                        />
+                        <field name="approval_state_2"
+                            class="oe_inline mt8 o_state pending"
+                            readonly="1"
+                            style="min-width: 10% !important;"
+                            attrs="{'invisible' : [('approval_state_2', '!=', 'pending')]}"
+                        />
+                        <field name="approval_state_2"
+                            class="oe_inline mt8 o_state cancelled"
+                            readonly="1"
+                            style="min-width: 10% !important;"
+                            attrs="{'invisible' : [('approval_state_2', '!=', 'cancelled')]}"
+                        />
+                        <field name="approval_state_2"
+                            class="oe_inline mt8 o_state hold"
+                            readonly="1"
+                            style="min-width: 10% !important;"
+                            attrs="{'invisible' : [('approval_state_2', '!=', 'hold')]}"
+                        />
+                        <br />
+                        
+                        <label for="approver_3" style="width: 14%;"/>
+                        <field name="approver_3"
+                            options="{'no_create_edit': True, 'no_create':True, 'no_open': True}"
+                            class="oe_inline"
+                            attrs="{'readonly': ['|', ('approval_state_3', '=', 'done'),('state','in', ('done','approval_3'))]}"
+                            style="min-width: 25% !important;margin-right:5px !important; "
+                        />
+                        <field name="approval_state_3"
+                            class="oe_inline mt8 o_state done"
+                            readonly="1"
+                            style="min-width: 10% !important;"
+                            attrs="{'invisible' : [('approval_state_3', '!=', 'done')]}"
+                        />
+                        <field name="approval_state_3"
+                            class="oe_inline mt8 o_state pending"
+                            readonly="1"
+                            style="min-width: 10% !important;"
+                            attrs="{'invisible' : [('approval_state_3', '!=', 'pending')]}"
+                        />
+                        <field name="approval_state_3"
+                            class="oe_inline mt8 o_state cancelled"
+                            readonly="1"
+                            style="min-width: 10% !important;"
+                            attrs="{'invisible' : [('approval_state_3', '!=', 'cancelled')]}"
+                        />
+                        <field name="approval_state_3"
+                            class="oe_inline mt8 o_state hold"
+                            readonly="1"
+                            style="min-width: 10% !important;"
+                            attrs="{'invisible' : [('approval_state_3', '!=', 'hold')]}"
+                        />
+                        <br />
+                    </div>
+                    <div>
+                        <div class="row" attrs="{'invisible': ['|',('is_author','=',False),('state','!=','approval_1')]}">
+                            <group string="Feedback">
+                                <field name="feedback_comment" nolabel="1" placeholder="Please input your feedback."/>
+                            </group>
+                            <div class="col-md-4 text-center" style="min-height: 50px !important;padding-top: 12px;">
+                                <button type="object" string="REJECT IT!" name="set_to_rejected" class="btn-danger"/>
+                            </div>
+                            <div class="col-md-4 text-center" style="min-height: 50px !important;padding-top: 12px;">
+                                <button type="object" string="RETURN BACK" name="set_states_back" class="btn-info"/>
+                            </div>
+                            <div class="col-md-4 text-center" style="min-height: 50px !important;padding-top: 12px;">
+                                <button type="object" string="APPROVE AND NEXT" name="states_approval" class="btn-success"/>
+                            </div>
                         </div>
-                        <div width="100%">
-                            <label for="approver_1" style="width: 14%;"/>
-                            <field name="approver_1"
-                                options="{'no_create_edit': True, 'no_create':True, 'no_open': True}"
-                                class="oe_inline"
-                                attrs="{'readonly': ['|', ('approval_state_1', '=', 'done'),('state','=', 'done')]}"
-                                style="min-width: 25% !important;margin-right:5px !important; "
-                            />
-                            <field name="approval_state_1"
-                                class="oe_inline mt8 o_state done"
-                                readonly="1"
-                                style="min-width: 10% !important;"
-                                attrs="{'invisible' : [('approval_state_1', '!=', 'done')]}"
-                            />
-                            <field name="approval_state_1"
-                                class="oe_inline mt8 o_state pending"
-                                readonly="1"
-                                style="min-width: 10% !important;"
-                                attrs="{'invisible' : [('approval_state_1', '!=', 'pending')]}"
-                            />
-                            <field name="approval_state_1"
-                                class="oe_inline mt8 o_state cancelled"
-                                readonly="1"
-                                style="min-width: 10% !important;"
-                                attrs="{'invisible' : [('approval_state_1', '!=', 'cancelled')]}"
-                            />
-                            <field name="approval_state_1"
-                                class="oe_inline mt8 o_state hold"
-                                readonly="1"
-                                style="min-width: 10% !important;"
-                                attrs="{'invisible' : [('approval_state_1', '!=', 'hold')]}"
-                            />
-                            <br />
-                            
-                            <label for="approver_2" style="width: 14%;"/>
-                            <field name="approver_2"
-                                options="{'no_create_edit': True, 'no_create':True, 'no_open': True}"
-                                class="oe_inline"
-                                attrs="{'readonly': ['|', ('approval_state_2', '=', 'done'),('state','=', 'done')]}"
-                                style="min-width: 25% !important;margin-right:5px !important; "
-                            />
-                            <field name="approval_state_2"
-                                class="oe_inline mt8 o_state done"
-                                readonly="1"
-                                style="min-width: 10% !important;"
-                                attrs="{'invisible' : [('approval_state_2', '!=', 'done')]}"
-                            />
-                            <field name="approval_state_2"
-                                class="oe_inline mt8 o_state pending"
-                                readonly="1"
-                                style="min-width: 10% !important;"
-                                attrs="{'invisible' : [('approval_state_2', '!=', 'pending')]}"
-                            />
-                            <field name="approval_state_2"
-                                class="oe_inline mt8 o_state cancelled"
-                                readonly="1"
-                                style="min-width: 10% !important;"
-                                attrs="{'invisible' : [('approval_state_2', '!=', 'cancelled')]}"
-                            />
-                            <field name="approval_state_2"
-                                class="oe_inline mt8 o_state hold"
-                                readonly="1"
-                                style="min-width: 10% !important;"
-                                attrs="{'invisible' : [('approval_state_2', '!=', 'hold')]}"
-                            />
-                            <br />
-                            
-                            <label for="approver_3" style="width: 14%;"/>
-                            <field name="approver_3"
-                                options="{'no_create_edit': True, 'no_create':True, 'no_open': True}"
-                                class="oe_inline"
-                                attrs="{'readonly': ['|', ('approval_state_3', '=', 'done'),('state','=', 'done')]}"
-                                style="min-width: 25% !important;margin-right:5px !important; "
-                            />
-                            <field name="approval_state_3"
-                                class="oe_inline mt8 o_state done"
-                                readonly="1"
-                                style="min-width: 10% !important;"
-                                attrs="{'invisible' : [('approval_state_3', '!=', 'done')]}"
-                            />
-                            <field name="approval_state_3"
-                                class="oe_inline mt8 o_state pending"
-                                readonly="1"
-                                style="min-width: 10% !important;"
-                                attrs="{'invisible' : [('approval_state_3', '!=', 'pending')]}"
-                            />
-                            <field name="approval_state_3"
-                                class="oe_inline mt8 o_state cancelled"
-                                readonly="1"
-                                style="min-width: 10% !important;"
-                                attrs="{'invisible' : [('approval_state_3', '!=', 'cancelled')]}"
-                            />
-                            <field name="approval_state_3"
-                                class="oe_inline mt8 o_state hold"
-                                readonly="1"
-                                style="min-width: 10% !important;"
-                                attrs="{'invisible' : [('approval_state_3', '!=', 'hold')]}"
-                            />
-                            <br />
+                        
+                        <div class="row" attrs="{'invisible': ['|',('is_reviewer','=',False),('state','!=','approval_2')]}">
+                            <group string="Feedback">
+                                <field name="feedback_comment" nolabel="1" placeholder="Please input your feedback."/>
+                            </group>
+                            <div class="col-md-4 text-center" style="min-height: 50px !important;padding-top: 12px;">
+                                <button type="object" string="REJECT IT!" name="set_to_rejected" class="btn-danger"/>
+                            </div>
+                            <div class="col-md-4 text-center" style="min-height: 50px !important;padding-top: 12px;">
+                                <button type="object" string="RETURN BACK" name="set_states_back" class="btn-info"/>
+                            </div>
+                            <div class="col-md-4 text-center" style="min-height: 50px !important;padding-top: 12px;">
+                                <button type="object" string="APPROVE AND NEXT" name="states_approval" class="btn-success"/>
+                            </div>
                         </div>
-                    </group>        
+                        
+                        <div class="row" attrs="{'invisible': ['|',('is_approver','=',False),('state','!=','approval_3')]}">
+                            <group string="Feedback">
+                                <field name="feedback_comment" nolabel="1" placeholder="Please input your feedback."/>
+                            </group>
+                            <div class="col-md-4 text-center" style="min-height: 50px !important;padding-top: 12px;">
+                                <button type="object" string="REJECT IT" name="set_to_rejected" class="btn-danger"/>
+                            </div>
+                            <div class="col-md-4 text-center" style="min-height: 50px !important;padding-top: 12px;">
+                                <button type="object" string="RETURN BACK" name="set_states_back" class="btn-info"/>
+                            </div>
+                            <div class="col-md-4 text-center" style="min-height: 50px !important;padding-top: 12px;">
+                                <button type="object" string="APPROVE AND NEXT" name="states_approval" class="btn-success"/>
+                            </div>
+                        </div>
+                    </div>    
                 </sheet>
                 <div class="oe_chatter">
                       <field name="message_follower_ids" widget="mail_followers"/>

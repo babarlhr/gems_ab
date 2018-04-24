@@ -104,12 +104,13 @@ class DocumentControl(models.Model):
             for rec in self:
                 approval_type = False
                 if rec.state == 'approval_1':
-                    approval_type = 'approval_1'
+                    approval_type = 'Author'
                 elif rec.state == 'approval_2':
-                    approval_type = 'approval_2'
+                    approval_type = 'Reviewer'
                 elif rec.state == 'approval_3':
-                    approval_type = 'approval_3'
+                    approval_type = 'Approver'
                 model_id = self.env.ref('document_control.model_document_control').id
+                user_feedback=rec.feedback_comment
                 try:
                     activity_type_id = self.env.ref('mail.mail_activity_data_todo').id
                 except ValueError:
@@ -122,7 +123,8 @@ class DocumentControl(models.Model):
                         ('activity_type_id', '=', activity_type_id)
                     ])
                     for activity_id in activity_ids:
-                        activity_id.action_feedback()
+                        activity_id.action_feedback(feedback=user_feedback)
+                    rec.feedback_comment = ''
         return super(DocumentControl, self).write(vals)
             
     @api.model
@@ -177,6 +179,26 @@ class DocumentControl(models.Model):
                 'state' : 'rejected',
                 'approval_state_3' : 'cancelled'
             })
+    
+    @api.multi
+    def set_states_back(self):
+        if self.state == "approval_1":
+            self.write({
+                'state' : 'draft',
+                'approval_state_1' : 'hold'
+            })
+        elif self.state == "approval_2":
+            self.write({
+                'state' : 'approval_1',
+                'approval_state_2' : 'hold',
+                'approval_state_1' : 'pending'
+            })
+        elif self.state == "approval_3":
+            self.write({
+                'state' : 'approval_2',
+                'approval_state_3' : 'hold',
+                'approval_state_2' : 'pending',
+            })
         
 #     Create an activity for the responsible person on state change.
     def _inverse_send_notification_approve(self):
@@ -186,15 +208,15 @@ class DocumentControl(models.Model):
         if self.state == 'approval_1':
             if self.approver_1:
                 responsible_id = self.approver_1
-                approval_type = 'approval_1'
+                approval_type = 'Author'
                 approval_name = self.approver_1.partner_id
         elif self.state == 'approval_2':
             responsible_id = self.approver_2
-            approval_type = 'approval_2'
+            approval_type = 'Reviewer'
             approval_name = self.approver_2.partner_id
         elif self.state == 'approval_3':
             responsible_id = self.approver_3
-            approval_type = 'approval_3'
+            approval_type = 'Approver'
             approval_name = self.approver_3.partner_id
             
         if responsible_id:
@@ -238,7 +260,6 @@ class DocumentControl(models.Model):
 
             partner_ids = list(set(partner_ids))
             doc_control.message_subscribe(partner_ids=partner_ids)
-            
             
 class IrAttachment(models.Model):
     _inherit = "ir.attachment"

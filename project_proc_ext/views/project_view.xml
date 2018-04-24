@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    
+    <record id="view_purchase_project_form_ext_fields" model="ir.ui.view">
+        <field name="name">purchase.project.form.ext.fields</field>
+        <field name="model">purchase.project</field>
+        <field name="inherit_id" ref="capex_procurement.view_purchase_project_form" />
+        <field name="arch" type="xml">
+            <field name="revised_budget_date" position="after">
+                <field name="project_status" />
+                <field name="project_tags" widget="many2many_tags" />
+                <field name="key_data" />
+            </field>
+        </field>
+    </record>
+    
+</odoo>

@@ -8,15 +8,36 @@ class DocumentControl(models.Model):
     _rec_name="name"
     
     name = fields.Char(string="Doc control Number", readonly=True,required=True, copy=False, index=True, default=lambda self: _('New'))
-    requested_by = fields.Many2one('hr.employee', string="Requested By", required=True)
-    date_time = fields.Datetime('DateTime')
+    requested_by = fields.Many2one('hr.employee', string="Requested By", readonly=True, default=lambda self: self.env.user.id)
+    date_time = fields.Datetime('Date Time', readonly=True, default=fields.datetime.now())
     doc_type = fields.Selection([
                                 ('msds', 'MSDS'),
                                 ('method_statement', 'Method Statement'),
-                                ('pme_sub', 'PME Sub'),
-                                ('rc_sub', 'RC Sub'),
+                                ('pme_sub', 'PME Submission'),
+                                ('rc_sub', 'RC Submission'),
+                                ('qa_doc', 'Q&A Documents'),
+                                ('process_statment', 'Process Statment'),
+                                ('reports', 'Reports'),
+                                ('studies', 'Studies'),
+                                ('correspondence', 'Correspondence'),
+                                ('calc_sheet', 'Calculation sheet'),
+                                ('model', 'Model'),
+                                ('drawings', 'Drawings'),
+                                ('presentation', 'Presentations'),
+                                ('responsibility_matrix', 'Responsibility Matrix'),
+                                ('review_verification_matrix', 'Review & verification Matrix')
                                 ], string="Doc type")
-    doc_attachment = fields.Char('Doc Attachment')
+#     doc_attachment = fields.Char('Doc Attachment')
+    req_for = fields.Selection([
+                            ('client', 'Client'),
+                            ('regulator', 'Regulator'),
+                            ('internal', 'Internal'),
+                            ('other', 'Other'),
+                                ], string="Req for")
+    req_reference = fields.Char('Reference')
+    doc_req_date = fields.Date('Doc Req date')
+    initiation_doc_date = fields.Date('Initiation Doc date')
+    
     description = fields.Text('Description')
     
     assign_to_manager = fields.Many2one('hr.employee', string="Assign to (Manager)", copy=False)
@@ -30,9 +51,9 @@ class DocumentControl(models.Model):
     doc_ids = fields.One2many('ir.attachment', 'document_id', 'Documents')
 #     doc_author = fields.Many2one('hr.employee', string="Author")
     
-    approver_1 = fields.Many2one('res.users', inverse="_inverse_approval_by_group", string="Author")
-    approver_2 = fields.Many2one('res.users', inverse="_inverse_approval_by_group", string="Reviewer")
-    approver_3 = fields.Many2one('res.users', inverse="_inverse_approval_by_group", string="Approver")
+    approver_1 = fields.Many2one('res.users', inverse="_inverse_approval_by_group", string="Author", required=True)
+    approver_2 = fields.Many2one('res.users', inverse="_inverse_approval_by_group", string="Reviewer", required=True)
+    approver_3 = fields.Many2one('res.users', inverse="_inverse_approval_by_group", string="Approver", required=True)
     
     state = fields.Selection([
                             ('draft', 'New'),

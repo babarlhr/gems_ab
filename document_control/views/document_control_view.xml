@@ -64,9 +64,9 @@
                     <button type="object" string="Return" attrs="{'invisible': ['|',('is_reviewer','=',False),('state','!=','approval_2')]}" name="states_approval"/>
                     <button type="object" string="Reject" attrs="{'invisible': ['|',('is_reviewer','=',False),('state','!=','approval_2')]}" name="states_approval" class="btn-danger"/> -->
                     
-                    <button type="object" string="Approve and next" attrs="{'invisible': ['|',('is_approver','=',False),('state','!=','approval_3')]}" name="states_approval" class="oe_highlight"/>
+                    <!-- <button type="object" string="Approve and next" attrs="{'invisible': ['|',('is_approver','=',False),('state','!=','approval_3')]}" name="states_approval" class="oe_highlight"/>
                     <button type="object" string="Return" attrs="{'invisible': ['|',('is_approver','=',False),('state','!=','approval_3')]}" name="states_approval"/>
-                    <button type="object" string="Reject" attrs="{'invisible': ['|',('is_approver','=',False),('state','!=','approval_3')]}" name="states_approval" class="btn-danger"/>
+                    <button type="object" string="Reject" attrs="{'invisible': ['|',('is_approver','=',False),('state','!=','approval_3')]}" name="states_approval" class="btn-danger"/> -->
                     
                     <!-- <button type="object" string="Approve and next" attrs="{'invisible': ['|',('is_approver','=',False),('state','!=','approval_3')]}" name="states_approval" class="oe_highlight"/> -->
                     <field name="state" widget="statusbar"/>

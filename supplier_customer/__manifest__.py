@@ -10,6 +10,7 @@
         'security/security.xml',
         'security/ir.model.access.csv',
         'views/contacts_menu.xml',
+        'views/res_partner_view.xml',
     ],
     'demo': [
     ],

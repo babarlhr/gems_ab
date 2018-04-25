@@ -14,7 +14,7 @@
     <!-- Customers -->
     <menuitem name="Customers"
         id="menu_customers"
-        sequence="3"
+        sequence="4"
         web_icon="contacts,static/description/icon.png"
         groups="supplier_customer.group_customer"/>
     
@@ -86,7 +86,7 @@
     <!-- Suppliers -->
     <menuitem name="Suppliers"
         id="menu_suppliers"
-        sequence="2"
+        sequence="3"
         web_icon="contacts,static/description/icon.png"
         groups="supplier_customer.group_supplier"/>
         

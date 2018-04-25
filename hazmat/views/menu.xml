@@ -22,5 +22,13 @@
         groups="hazmat.group_material_admin_user,hazmat.group_wb_operator,hazmat.group_fingerprint_analysis,hazmat.group_process_data"
         sequence="2"
         />
+        
+    <menuitem id="menu_hazmat_classification_matrix"
+        string="Classification Matrix"
+        action="action_classification_matrix"
+        parent="hazmat_app_root_menu"
+        groups="hazmat.group_material_admin_user,hazmat.group_wb_operator,hazmat.group_fingerprint_analysis,hazmat.group_process_data"
+        sequence="3"
+        />
     
 </odoo>

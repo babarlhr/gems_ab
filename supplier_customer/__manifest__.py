@@ -5,7 +5,7 @@
     "author": "Odoo Advantage Ireland",
     "website": "www.odoo.ie",
     "category": "contacts",
-    "depends": ['contacts', 'base'],
+    "depends": ['contacts', 'base','workflow'],
     "data": [
         'security/security.xml',
         'security/ir.model.access.csv',

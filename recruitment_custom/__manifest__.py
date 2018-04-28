@@ -5,6 +5,7 @@
     'website' : 'www.erp.odoo.ie',
     'depends' : ['hr', 'hr_recruitment','catalyst_hrms_operating_unit'],
     'data' : [
+                'security/ir.model.access.csv',
                 'views/job_position.xml',
                 'reports/job_position_reports.xml',
                 'reports/job_position_template.xml',

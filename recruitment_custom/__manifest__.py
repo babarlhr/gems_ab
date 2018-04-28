@@ -1,9 +1,9 @@
 {
     'name' : 'Recruitment Custom',
     'description' : 'Adding fields to recruitment module',
-    'author' : 'Odoo IE',
+    'author' : 'Odoo Advantage Ireland',
     'website' : 'www.erp.odoo.ie',
-    'depends' : ['hr', 'hr_recruitment'],
+    'depends' : ['hr', 'hr_recruitment','catalyst_hrms_operating_unit'],
     'data' : [
                 'views/job_position.xml',
                 'reports/job_position_reports.xml',

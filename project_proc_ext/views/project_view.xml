@@ -10,6 +10,9 @@
                 <field name="project_status" />
                 <field name="project_tags" widget="many2many_tags" />
                 <field name="key_data" />
+                <field name="power_rating_mono" />
+                <field name="power_rating_tri" />
+                <field name="others_p" />
             </field>
         </field>
     </record>

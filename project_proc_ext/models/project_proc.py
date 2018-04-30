@@ -9,6 +9,9 @@ class PurchaseProject(models.Model):
                                 ('completed', 'Completed'),
                                 ], string="Project Status")
     key_data = fields.Text('Key Data')
+    power_rating_mono = fields.Char('Power Rating (Mono)')
+    power_rating_tri = fields.Char('Power Rating (Tri)')
+    others_p = fields.Char('Others')
     project_tags = fields.Many2many('purchase.project.tags', string="Tags")
     
     

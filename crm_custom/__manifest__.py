@@ -5,7 +5,7 @@
     'website' : 'www.odoo.ie',
     'data' : [
             'security/ir.model.access.csv',
-            'views/expect_contract_view.xml'
+            'views/expect_contract_view.xml',
             'views/crm_view.xml',
             ],
     'depends' : ['crm','base','product','sale_stock'],

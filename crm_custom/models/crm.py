@@ -37,8 +37,23 @@ class CRMLead(models.Model):
     tolerance =  fields.Float('Tolerance')
     
     crm_line_ids = fields.One2many('crm.lead.line','crm_lead_id', string="Expected Contract")
+    crm_contract_id = fields.One2many('crm.lead.contract', 'crm_contract_id', string="CRM Contract")
+    contract_count = fields.Integer(string='Expect Contracts', compute='_compute_expect_contracts')
     
+    def _compute_expect_contracts(self):
+        self.contract_count = len(self.crm_contract_id)
     
+    @api.multi
+    def action_view_contracts(self):
+        action = self.env.ref('crm_custom.action_crm_expected_contract').read()[0]
+        crm_contracts = self.mapped('crm_contract_id')
+        if len(crm_contracts) > 1:
+            action['domain'] = [('id', 'in', crm_contracts.ids)]
+        elif crm_contracts:
+            action['views'] = [(self.env.ref('crm_custom.crm_expected_contract_view_form').id, 'form')]
+            action['res_id'] = crm_contracts.id
+        return action
+        
     def _compute_probability_based_value(self):
         for lead in self:
             lead.probability_based_value = lead.planned_revenue * (lead.probability / 100)

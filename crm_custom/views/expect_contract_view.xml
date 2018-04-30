@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    
+    <record id="action_crm_expected_contract" model="ir.actions.act_window">
+        <field name="name">Expected Contracts</field>
+        <field name="res_model">crm.lead.contract</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('crm_contract_id', '=', active_id)]</field>
+        <field name="context">{'search_default_crm_contract_id': active_id, 'default_crm_contract_id': active_id}</field>
+    </record>
+    
+    <record id="action_sale_expected_contract" model="ir.actions.act_window">
+        <field name="name">Expected Contracts</field>
+        <field name="res_model">crm.lead.contract</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('sale_contract_id', '=', active_id)]</field>
+        <field name="context">{'search_default_sale_contract_id': active_id, 'default_sale_contract_id': active_id}</field>
+    </record>
+    
+    <record id="crm_expected_contract_view_tree" model="ir.ui.view">
+        <field name="name">crm.expected.contract.tree</field>
+        <field name="model">crm.lead.contract</field>
+        <field name="arch" type="xml">
+            <tree name="expected_contract" string="Expected Contract">
+                <field name="prospective_client"/>
+                <field name="expected_starte_date"/>
+                <field name="expected_end_date" />
+            </tree>
+        </field>
+    </record>
+    
+    <record id="crm_expected_contract_view_form" model="ir.ui.view">
+        <field name="name">crm.expected.contract.form</field>
+        <field name="model">crm.lead.contract</field>
+        <field name="arch" type="xml">
+            <form name="expected_contract" string="Expected Contract">
+                <sheet>
+                    <div class="oe_title">
+                        <h1><field name="name" /></h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="prospective_client" required="True"/>
+                            <field name="expected_starte_date" />
+                            <field name="expected_contract_terms" />
+                            <field name="expected_max_contract_value" />
+                        </group>
+                        <group>
+                            <field name="max_tonnage"/>
+                            <field name="expected_end_date" />
+                            <field name="tolerance" />
+                        </group>
+                    </group>
+
+                    <notebook>
+                        <page name='expect_contract_line' string="Expect Contract Line">
+                            <field name="contract_line_ids">
+                                <tree editable="bottom">
+                                    <field name="division" />
+                                    <field name="rev_type" />
+                                    <field name="description" />
+                                    <field name="change_type" />
+                                    <field name="service_class" />
+                                    <field name="rate" />
+                                    <field name="unit" />
+                                    <field name="line_from" />
+                                    <field name="line_to" />
+                                    <field name="max_value" />
+                                    <field name="max_qty" />
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    
+</odoo>

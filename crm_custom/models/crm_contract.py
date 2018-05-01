@@ -12,7 +12,7 @@ class SaleOrder(models.Model):
     @api.model
     def create(self, vals):
         result = super(SaleOrder, self).create(vals)
-        if self.exp_contract_id:
+        if result.opportunity_id.crm_contract_id:
             result['exp_contract_id'] = result.opportunity_id.crm_contract_id
         return result
 

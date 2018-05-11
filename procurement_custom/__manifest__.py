@@ -5,6 +5,7 @@
     'data' : [
             'security/security.xml',
             'views/procurement.xml',
+            'views/rfq.xml',
         ],
     'depends' : ['purchase','base','project','capex_procurement'],
     'installable' : True,

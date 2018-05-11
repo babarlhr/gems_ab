@@ -11,7 +11,7 @@ class HelpdeskTicket(models.Model):
     def create(self, vals):
         ticket = super(HelpdeskTicket, self).create(vals)
         
-        if vals.get('user_id'):
+        if not vals.get('user_id'):
             group_users = self.env['res.groups'].search([('category_id','=','Helpdesk'),('name','=','Manager')]).users
 #             [user [for user.login in group_users]]
             

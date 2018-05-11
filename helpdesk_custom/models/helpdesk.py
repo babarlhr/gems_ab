@@ -4,7 +4,7 @@ from odoo import http
 class HelpdeskTicket(models.Model):
     _inherit = 'helpdesk.ticket'
     
-#     description = fields.Html()
+    description = fields.Html()
     attachment_id = fields.One2many('ir.attachment','helpdesk_ticket_ids', string="Attachments")
     
     @api.model

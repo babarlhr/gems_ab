@@ -5,6 +5,7 @@
     'website' : 'erp.odoo.ie',
     'data' : [
             'views/helpdesk_view.xml',
+            'views/templates.xml',
         ],
     'depends' : ['helpdesk','helpdesk_timesheet','mail'],
     'installable' : True,

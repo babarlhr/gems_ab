@@ -5,9 +5,6 @@
         <field name="model">helpdesk.ticket</field>
         <field name="inherit_id" ref="helpdesk.helpdesk_ticket_view_form"/>
         <field name="arch" type="xml">
-            <!-- <xpath expr="//field[@name='user_id']" position="attributes">
-                <attribute name="invisible">True</attribute>
-            </xpath> -->
             <xpath expr="//field[@name='company_id']" position="attributes">
                 <attribute name="invisible">True</attribute>
             </xpath>
@@ -19,6 +16,19 @@
             </xpath>
             <xpath expr="//field[@name='partner_id']" position="attributes">
                 <attribute name="invisible">True</attribute>
+            </xpath>
+            <xpath expr="//form/sheet/group" position="inside">
+                <group>
+                    <field nolabel="1" name="attachment_id" context="{'default_helpdesk_ticket_ids': active_id, 'default_res_model': 'helpdesk.ticket'}">
+                        <tree editable="bottom">
+                            <field name="name" string="Name"/>
+                            <field string="Attachment" name="datas" filename="datas_fname" attrs="{'invisible':[('type','=','url')]}" widget="binary"/>
+                            <field name="datas_fname" invisible="1" attrs="{'invisible':[('type','=','url')]}" class="oe_inline oe_right"/>
+                            <field name="type" invisible="1"/>
+                            <field name="helpdesk_ticket_ids" invisible="1"/>
+                        </tree>
+                    </field>
+                </group>
             </xpath>
         </field>
     </record>

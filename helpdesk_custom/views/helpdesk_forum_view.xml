@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    
+    <template id="helpdesk_custom.ticket_submit_custom" inherit_id="website_helpdesk_form.ticket_submit">
+        <xpath expr="//textarea[@name='description']" position="replace">
+            <textarea class="form-control o_website_form_input" name="description" style="height:350px;">
+What are the steps to reproduce your issue?
+
+
+
+
+What is the current behavior that you observe?
+
+
+
+
+What would be your expected behavior in this case?
+
+
+
+
+            </textarea>
+        </xpath>
+    </template>
+    
+</odoo>

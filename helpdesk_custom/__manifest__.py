@@ -6,7 +6,8 @@
     'data' : [
             'views/helpdesk_view.xml',
             'views/templates.xml',
+            'views/helpdesk_forum_view.xml',
         ],
-    'depends' : ['helpdesk','helpdesk_timesheet','mail'],
+    'depends' : ['helpdesk','helpdesk_timesheet','mail','website_helpdesk_form'],
     'installable' : True,
 }

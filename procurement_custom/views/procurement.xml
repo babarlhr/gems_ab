@@ -45,9 +45,63 @@
             <xpath expr="//field[@name='approved_date']" position="attributes">
                 <attribute name="invisible">True</attribute>
             </xpath>
-            <xpath expr="//form/sheet/div" position="attributes">
+            
+            <xpath expr="//form/sheet/div/label[@for='technical_manager']" position="attributes">
                 <attribute name="invisible">True</attribute>
             </xpath>
+            <xpath expr="//form/sheet/div/field[@name='technical_manager']" position="attributes">
+                <attribute name="required">False</attribute>
+                <attribute name="invisible">True</attribute>
+            </xpath>
+            <xpath expr="//form/sheet/div/field[@name='technical_state']" position="attributes">
+                <attribute name="invisible">True</attribute>
+            </xpath>
+            <xpath expr="//form/sheet/div/field[@name='technical_approved_date']" position="attributes">
+                <attribute name="invisible">True</attribute>
+            </xpath>
+            
+            <xpath expr="//form/sheet/div/label[@for='commersial_manager']" position="attributes">
+                <attribute name="invisible">True</attribute>
+            </xpath>
+            <xpath expr="//form/sheet/div/field[@name='commersial_manager']" position="attributes">
+                <attribute name="required">False</attribute>
+                <attribute name="invisible">True</attribute>
+            </xpath>
+            <xpath expr="//form/sheet/div/field[@name='commercial_state']" position="attributes">
+                <attribute name="invisible">True</attribute>
+            </xpath>
+            <xpath expr="//form/sheet/div/field[@name='commercial_approved_date']" position="attributes">
+                <attribute name="invisible">True</attribute>
+            </xpath>
+            
+            <xpath expr="//form/sheet/div/label[@for='financial_manager']" position="attributes">
+                <attribute name="invisible">True</attribute>
+            </xpath>
+            <xpath expr="//form/sheet/div/field[@name='financial_manager']" position="attributes">
+                <attribute name="required">False</attribute>
+                <attribute name="invisible">True</attribute>
+            </xpath>
+            <xpath expr="//form/sheet/div/field[@name='financial_state']" position="attributes">
+                <attribute name="invisible">True</attribute>
+            </xpath>
+            <xpath expr="//form/sheet/div/field[@name='financial_approved_date']" position="attributes">
+                <attribute name="invisible">True</attribute>
+            </xpath>
+            
+            <xpath expr="//form/sheet/div/label[@for='management_manager']" position="attributes">
+                <attribute name="invisible">True</attribute>
+            </xpath>
+            <xpath expr="//form/sheet/div/field[@name='management_manager']" position="attributes">
+                <attribute name="required">False</attribute>
+                <attribute name="invisible">True</attribute>
+            </xpath>
+            <xpath expr="//form/sheet/div/field[@name='management_state']" position="attributes">
+                <attribute name="invisible">True</attribute>
+            </xpath>
+            <xpath expr="//form/sheet/div/field[@name='management_approved_date']" position="attributes">
+                <attribute name="invisible">True</attribute>
+            </xpath>
+            
             <xpath expr="//form/sheet/div[2]" position="attributes">
                 <attribute name="invisible">True</attribute>
             </xpath>

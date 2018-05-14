@@ -1,0 +1,232 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* sale_invoice_custom
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 11.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-05-05 06:47+0000\n"
+"PO-Revision-Date: 2018-05-05 06:47+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: sale_invoice_custom
+#: model:ir.ui.view,arch_db:sale_invoice_custom.report_invoice_custom_arabic
+msgid "&amp;nbsp;"
+msgstr ""
+
+#. module: sale_invoice_custom
+#: model:ir.ui.view,arch_db:sale_invoice_custom.report_invoice_custom_arabic
+msgid "&amp;nbsp;<span>on</span>"
+msgstr "<span>on</span>"
+
+#. module: sale_invoice_custom
+#: model:ir.ui.view,arch_db:sale_invoice_custom.report_invoice_custom_arabic
+msgid "Total"
+msgstr ""
+
+#. module: sale_invoice_custom
+#: model:ir.ui.view,arch_db:sale_invoice_custom.report_invoice_custom_arabic
+msgid "VAT(%)"
+msgstr ""
+
+#. module: sale_invoice_custom
+#: model:ir.ui.view,arch_db:sale_invoice_custom.report_invoice_custom_arabic
+msgid "VAT"
+msgstr ""
+
+#. module: sale_invoice_custom
+#: model:ir.ui.view,arch_db:sale_invoice_custom.report_invoice_custom_arabic
+msgid "<span>Customer VAT</span>"
+msgstr "<span>الرقم المرجعى للعصىل</span>"
+
+#. module: sale_invoice_custom
+#: model:ir.ui.view,arch_db:sale_invoice_custom.report_invoice_custom_arabic
+msgid "<span>Company VAT</span>"
+msgstr "<span> الرقم الضرىبى المنشاة</span>"
+
+#. module: sale_invoice_custom
+#: model:ir.ui.view,arch_db:sale_invoice_custom.report_invoice_custom_arabic
+msgid "Invoice No"
+msgstr "رقم الفاتورة"
+
+#. module: sale_invoice_custom
+#: model:ir.ui.view,arch_db:sale_invoice_custom.report_invoice_custom_arabic
+msgid "<span>Invoice Date</span>"
+msgstr "<span>تاريخ الفاتورة</span>"
+
+#. module: sale_invoice_custom
+#: model:ir.ui.view,arch_db:sale_invoice_custom.report_invoice_custom_arabic
+msgid "From"
+msgstr "من"
+
+#. module: sale_invoice_custom
+#: model:ir.ui.view,arch_db:sale_invoice_custom.report_invoice_custom_arabic
+msgid "Address"
+msgstr "العنؤان"
+
+#. module: sale_invoice_custom
+#: model:ir.ui.view,arch_db:sale_invoice_custom.report_invoice_custom_arabic
+msgid "To"
+msgstr "الى"
+
+#. module: sale_invoice_custom
+#: model:ir.ui.view,arch_db:sale_invoice_custom.report_invoice_custom_arabic
+msgid "<strong>Customer Code:</strong>"
+msgstr "<strong>كود العميل:</strong>"
+
+#. module: sale_invoice_custom
+#: model:ir.ui.view,arch_db:sale_invoice_custom.report_invoice_custom_arabic
+msgid "<strong>Description:</strong>"
+msgstr "<strong>الوصف:</strong>"
+
+#. module: sale_invoice_custom
+#: model:ir.ui.view,arch_db:sale_invoice_custom.report_invoice_custom_arabic
+msgid "<strong>Due Date:</strong>"
+msgstr "<strong>تاريخ الاستحقاق:</strong>"
+
+#. module: sale_invoice_custom
+#: model:ir.ui.view,arch_db:sale_invoice_custom.report_invoice_custom_arabic
+msgid "<strong>Invoice Date:</strong>"
+msgstr "<strong>تاريخ الفاتورة:</strong>"
+
+#. module: sale_invoice_custom
+#: model:ir.ui.view,arch_db:sale_invoice_custom.report_invoice_custom_arabic
+msgid "<strong>Reference:</strong>"
+msgstr "<strong>رقم الإشارة:</strong>"
+
+#. module: sale_invoice_custom
+#: model:ir.ui.view,arch_db:sale_invoice_custom.report_invoice_custom_arabic
+msgid "<strong>Source:</strong>"
+msgstr "<strong>المصدر:</strong>"
+
+#. module: sale_invoice_custom
+#: model:ir.ui.view,arch_db:sale_invoice_custom.report_invoice_custom_arabic
+msgid "<strong>Subtotal</strong>"
+msgstr "<strong>الإجمالي الفرعي</strong>"
+
+#. module: sale_invoice_custom
+#: model:ir.ui.view,arch_db:sale_invoice_custom.report_invoice_custom_arabic
+msgid "<strong>Total</strong>"
+msgstr "<strong>الإجمالي</strong>"
+
+#. module: sale_invoice_custom
+#: model:ir.ui.view,arch_db:sale_invoice_custom.report_invoice_custom_arabic
+msgid "Amount"
+msgstr "الزمن"
+
+#. module: sale_invoice_custom
+#: model:ir.ui.view,arch_db:sale_invoice_custom.report_invoice_custom_arabic
+msgid "Cancelled Invoice"
+msgstr "فاتورة ملغاة"
+
+#. module: sale_invoice_custom
+#: model:ir.model.fields,field_description:sale_invoice_custom.field_report_sale_invoice_custom_report_invoice_custom_arabic_create_uid
+msgid "Created by"
+msgstr "أنشئ بواسطة"
+
+#. module: sale_invoice_custom
+#: model:ir.model.fields,field_description:sale_invoice_custom.field_report_sale_invoice_custom_report_invoice_custom_arabic_create_date
+msgid "Created on"
+msgstr "أنشئ في"
+
+#. module: sale_invoice_custom
+#: model:ir.ui.view,arch_db:sale_invoice_custom.report_invoice_custom_arabic
+msgid "Credit Note"
+msgstr "اخطار بالرصيد"
+
+#. module: sale_invoice_custom
+#: model:ir.ui.view,arch_db:sale_invoice_custom.report_invoice_custom_arabic
+msgid "Description"
+msgstr "الوصف"
+
+#. module: sale_invoice_custom
+#: model:ir.ui.view,arch_db:sale_invoice_custom.report_invoice_custom_arabic
+msgid "Disc.(%)"
+msgstr "نسبة الخصم (%)"
+
+#. module: sale_invoice_custom
+#: model:ir.model.fields,field_description:sale_invoice_custom.field_report_sale_invoice_custom_report_invoice_custom_arabic_display_name
+msgid "Display Name"
+msgstr "الاسم المعروض"
+
+#. module: sale_invoice_custom
+#: model:ir.ui.view,arch_db:sale_invoice_custom.report_invoice_custom_arabic
+msgid "Draft Invoice"
+msgstr "مسودة للفاتورة"
+
+#. module: sale_invoice_custom
+#: model:ir.model.fields,field_description:sale_invoice_custom.field_report_sale_invoice_custom_report_invoice_custom_arabic_id
+msgid "ID"
+msgstr "المعرف"
+
+#. module: sale_invoice_custom
+#: model:ir.ui.view,arch_db:sale_invoice_custom.report_invoice_custom_arabic
+msgid "Invoice"
+msgstr "الفاتورة"
+
+#. module: sale_invoice_custom
+#: model:ir.model.fields,field_description:sale_invoice_custom.field_report_sale_invoice_custom_report_invoice_custom_arabic___last_update
+msgid "Last Modified on"
+msgstr "آخر تعديل في"
+
+#. module: sale_invoice_custom
+#: model:ir.model.fields,field_description:sale_invoice_custom.field_report_sale_invoice_custom_report_invoice_custom_arabic_write_uid
+msgid "Last Updated by"
+msgstr "آخر تحديث بواسطة"
+
+#. module: sale_invoice_custom
+#: model:ir.model.fields,field_description:sale_invoice_custom.field_report_sale_invoice_custom_report_invoice_custom_arabic_write_date
+msgid "Last Updated on"
+msgstr "آخر تحديث في"
+
+#. module: sale_invoice_custom
+#: model:ir.ui.view,arch_db:sale_invoice_custom.report_invoice_custom_arabic
+msgid "Quantity"
+msgstr "كمية"
+
+#. module: sale_invoice_custom
+#: model:ir.ui.view,arch_db:sale_invoice_custom.report_invoice_custom_arabic
+msgid "Source Document"
+msgstr "المستند المصدر"
+
+#. module: sale_invoice_custom
+#: model:ir.ui.view,arch_db:sale_invoice_custom.report_invoice_custom_arabic
+msgid "Taxes"
+msgstr "ضرائب"
+
+#. module: sale_invoice_custom
+#: model:ir.ui.view,arch_db:sale_invoice_custom.report_invoice_custom_arabic
+msgid "Unit Price"
+msgstr "سعر الوحده "
+
+#. module: sale_invoice_custom
+#: model:ir.ui.view,arch_db:sale_invoice_custom.report_invoice_custom_arabic
+msgid "Vendor Bill"
+msgstr "فاتورة المورد"
+
+#. module: sale_invoice_custom
+#: model:ir.ui.view,arch_db:sale_invoice_custom.report_invoice_custom_arabic
+msgid "Vendor Credit Note"
+msgstr "Vendor Credit Note"
+
+#. module: sale_invoice_custom
+#: model:ir.model,name:sale_invoice_custom.model_report_account_report_invoice_document
+msgid "report.account.report_invoice_document"
+msgstr "report.account.report_invoice_document"
+
+#. module: sale_invoice_custom
+#: model:ir.model,name:sale_invoice_custom.model_report_sale_invoice_custom_customer_invoice_template
+msgid "report.sale_invoice_custom.customer_invoice_template"
+msgstr "report.sale_invoice_custom.customer_invoice_template"
+
+#. module: sale_invoice_custom
+#: model:ir.model,name:sale_invoice_custom.model_report_sale_invoice_custom_report_invoice_custom_arabic
+msgid "report.sale_invoice_custom.report_invoice_custom_arabic"
+msgstr "report.sale_invoice_custom.report_invoice_custom_arabic"
+

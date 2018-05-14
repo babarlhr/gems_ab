@@ -7,6 +7,6 @@
             'views/procurement.xml',
             'views/rfq.xml',
         ],
-    'depends' : ['purchase','base','project','capex_procurement'],
+    'depends' : ['purchase','capex_procurement'],
     'installable' : True,
 }

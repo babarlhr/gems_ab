@@ -33,8 +33,8 @@
     
     <record id="view_purchase_project_form_inherit_view" model="ir.ui.view">
         <field name="name">purchase.project.form.inherit.view</field>
-        <field name="model">purchase.project</field>
-        <field name="inherit_id" ref="capex_procurement.view_purchase_project_form"/>
+        <field name="model">purchase.project.boq</field>
+        <field name="inherit_id" ref="capex_procurement.view_purchase_project_boq_form"/>
         <field name="arch" type="xml">
             <xpath expr="//button[@name='request_next_approval']" position="attributes">
                 <attribute name="invisible">True</attribute>
@@ -42,13 +42,13 @@
             <xpath expr="//field[@name='state']" position="attributes">
                 <attribute name="invisible">True</attribute>
             </xpath>
-            <xpath expr="//field[@name='approval_date']" position="attributes">
+            <xpath expr="//field[@name='approved_date']" position="attributes">
+                <attribute name="invisible">True</attribute>
+            </xpath>
+            <xpath expr="//form/sheet/div" position="attributes">
                 <attribute name="invisible">True</attribute>
             </xpath>
             <xpath expr="//form/sheet/div[2]" position="attributes">
-                <attribute name="invisible">True</attribute>
-            </xpath>
-            <xpath expr="//form/sheet/div[3]" position="attributes">
                 <attribute name="invisible">True</attribute>
             </xpath>
         </field>

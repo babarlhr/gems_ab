@@ -8,12 +8,12 @@
     'summary': 'Adding workflow to contacts',
     'description': """
     """,
-    'depends': ['base','hr','product'],
+    'depends': ['product','base','hr'],
     'data': [
                 'security/workflow_security.xml',
                 'views/contacts.xml',
                 'views/employee.xml',
-                'views/product.xml',
+                'views/product_workflow.xml',
             ],
     'installable': True,
 }

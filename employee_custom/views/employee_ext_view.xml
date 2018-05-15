@@ -18,7 +18,7 @@
                     <div class="oe_title">
                         <label for="name_ar" class="oe_edit_only"/>
                         <h3>
-                            <field name="name_ar" placeholder="Employee's Name (Arabic)" required="True"/>
+                            <field name="name_ar" placeholder="Employee's Name (Arabic)" required="False"/>
                         </h3>
                     </div>
                 </div>
@@ -26,6 +26,9 @@
             <xpath expr="/form/sheet/div/div/notebook/page[@name='public']" position="attributes">
                 <attribute name="string">General</attribute>
             </xpath>
+            <field name="address_id" position="before">
+                <field name="user_id" string="Related User"/>
+            </field>
             <xpath expr="/form/sheet/div/div/notebook/page[@name='personal_information']/group/group[2]" position="replace">
                 <group string="Contact Information" invisible="1">
                     <field name="address_home_id"
@@ -218,7 +221,6 @@
                         <group>
                             <group string='Status' name="active_group">
                                 <field name="company_id" groups="base.group_multi_company"/>
-                                <field name="user_id" string="Related User"/>
                             </group>
                         </group>
                     </page>

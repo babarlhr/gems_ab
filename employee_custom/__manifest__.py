@@ -1,7 +1,7 @@
 {
     'name' : 'Employee Custom',
     'description' : 'Adding fields to employee Form',
-    'author' : 'Odoo IE',
+    'author' : 'Odoo Advantage Ireland',
     'website' : 'www.erp.odoo.ie',
     'depends' : ['hr', 'hr_gamification','mail'],
     'data' : [

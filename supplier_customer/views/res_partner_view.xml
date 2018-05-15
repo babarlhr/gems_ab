@@ -15,6 +15,17 @@
                 <!-- <attribute name="attrs">{'invisible': [('supplier','=',False)]}</attribute> -->
                 <attribute name="string">Tags (Supply Types)</attribute>
             </xpath>
+            
+            <xpath expr="//notebook/page/field[@name='child_ids']/form/sheet/group/group/div/div/field[@name='street2']" position="after">
+                <field name="street3" placeholder="Street 2..." class="o_address_street"/>
+            </xpath>
+                        
+            <xpath expr="//notebook/page/field[@name='child_ids']/form/sheet/group/group" position="inside">
+                <field name="longitude" />
+                <field name="latitude" />
+                <field name="google_address" />
+            </xpath>
+            
         </field>
     </record>
     

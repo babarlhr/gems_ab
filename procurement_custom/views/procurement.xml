@@ -6,12 +6,24 @@
         <field name="model">purchase.order</field>
         <field name="inherit_id" ref="purchase.purchase_order_form"/>
         <field name="arch" type="xml">
+        
+            <xpath expr="//field[@name='date_order']" position="attributes">
+                <attribute name="readonly">True</attribute>
+            </xpath>
             <xpath expr="//field[@name='amount_untaxed']" position="attributes">
                 <attribute name="string">Sub Total</attribute>
             </xpath>
             <xpath expr="//field[@name='company_id']" position="attributes">
                 <attribute name="invisible">True</attribute>
             </xpath>
+            <xpath expr="//form/sheet/div[2]/label" position="attributes">
+                <attribute name="string">Request for Quotation / Draft PO</attribute>
+            </xpath>
+            
+            <field name="product_uom" position="attributes">
+                <attribute name="options">{'no_create_edit' : True, 'no_open': True}</attribute>
+            </field>
+            
         </field>
     </record>
     
@@ -107,5 +119,17 @@
             </xpath>
         </field>
     </record>
+    
+    <!-- <record model="ir.ui.view" id="purchase_order_form_inherit_procurement">
+        <field name="name">purchase.order.form.inherit.procurement</field>
+        <field name="model">purchase.order</field>
+        <field name="inherit_id" ref="purchase_requisition.purchase_order_form_inherit"/>
+        <field name="arch" type="xml">
+            <field name="requisition_id" position="replace"> -->
+                <!-- <field name="requisition_id"
+                    domain="[('state', 'in', ('in_progress', 'open')), ('vendor_id', 'in', (partner_id, False))]"/> -->
+            <!-- </field>
+        </field>
+    </record> -->
     
 </odoo>

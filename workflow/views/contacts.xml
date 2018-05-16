@@ -9,6 +9,7 @@
             <xpath expr="/form/sheet" position="before">
                 <header>
                     <button type="object" string="Unverified ! Please verify" name="verification" class="btn-danger" groups="workflow.module_group_workflow" states="unverified"/>
+                    <button type="object" string="Reset to Un-verify" name="make_unverified" groups="workflow.module_group_workflow" class="btn-info" states="verified"/>
                     <field name="state" widget="statusbar" />
                 </header>
             </xpath>

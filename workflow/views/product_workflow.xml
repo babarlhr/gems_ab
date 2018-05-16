@@ -8,6 +8,7 @@
         <field name="arch" type="xml">
             <xpath expr="/form/header" position="inside">
                 <button type="object" string="Unverified ! Please verify" name="verification" groups="workflow.module_group_workflow" class="btn-danger" states="unverified"/>
+                <button type="object" string="Reset to Un-verify" name="make_unverified" groups="workflow.module_group_workflow" class="btn-info" states="verified"/>
                 <field name="state" widget="statusbar" />
             </xpath>
         </field>

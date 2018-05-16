@@ -13,3 +13,8 @@ access_material_type_user,material.type.user,model_material_type,hazmat.group_ma
 access_material_type_operator,material.type.operator,model_material_type,hazmat.group_wb_operator,1,1,1,1
 access_material_type_analysis,material.type.analysis,model_material_type,hazmat.group_fingerprint_analysis,1,1,1,1
 access_material_type_process,material.type.process,model_material_type,hazmat.group_process_data,1,1,1,1
+
+access_classification_matrix_user,classification.matrix.user,model_classification_matrix,hazmat.group_material_admin_user,1,1,1,1
+access_classification_matrix_user,classification.matrix.user,model_classification_matrix,hazmat.group_wb_operator,1,1,1,1
+access_classification_matrix_user,classification.matrix.user,model_classification_matrix,hazmat.group_fingerprint_analysis,1,1,1,1
+access_classification_matrix_user,classification.matrix.user,model_classification_matrix,hazmat.group_process_data,1,1,1,1

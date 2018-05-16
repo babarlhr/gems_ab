@@ -18,3 +18,5 @@ access_classification_matrix_user,classification.matrix.user,model_classificatio
 access_classification_matrix_user,classification.matrix.user,model_classification_matrix,hazmat.group_wb_operator,1,1,1,1
 access_classification_matrix_user,classification.matrix.user,model_classification_matrix,hazmat.group_fingerprint_analysis,1,1,1,1
 access_classification_matrix_user,classification.matrix.user,model_classification_matrix,hazmat.group_process_data,1,1,1,1
+
+access_res_company_user,res.company.user,base.model_res_company,hazmat.group_company_user,1,1,0,0

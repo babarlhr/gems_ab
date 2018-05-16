@@ -16,6 +16,13 @@
             <field name="sequence">1</field>
         </record>
         
+        <record model="res.groups" id="group_company_user">
+            <field name="name">Company Access</field>
+            <!-- <field name="category_id" ref="module_category_hazmat"/> -->
+            <!-- <field name="comment">This user can access Material Admin Tab</field> -->
+            <!-- <field name="sequence">1</field> -->
+        </record>
+        
         <record model="res.groups" id="group_wb_operator">
             <field name="name">WB Operator</field>
             <field name="category_id" ref="module_category_hazmat"/>
